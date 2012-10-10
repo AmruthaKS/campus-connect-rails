@@ -1,0 +1,17 @@
+<% provide(:title, 'New college') %>
+<h1>New College</h1>
+
+<div class="row">
+  <div class="span6 offset3 autoTextHeight">
+    <%= form_for(@department) do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+    <%= f.hidden_field :admin_id, :value => current_user.id %>
+    <%= f.hidden_field :college_id, :value => @current_college.id %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.submit "Create Dept.", :class => "btn btn-large btn-primary" %>
+<% end %>
+  </div>
+</div>
