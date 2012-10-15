@@ -65,6 +65,10 @@ p {
   line-height: 1;
 }
 
+.left_bar{
+  width : 200px;
+}
+
 #logo:hover {
   color: #fff;
   text-decoration: none;
@@ -289,4 +293,19 @@ padding-left : 10%;
     textarea{
     height: 60px;
 }
+}
+
+.post_field{
+  textarea{
+    height: 70px;
+  }
+}
+
+.favorite_links{
+  background-color: #D8DFEA;
+  border-bottom: 1px solid #EEE;
+  li{
+    list-style: none;
+      
+  }
 }

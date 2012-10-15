@@ -1,16 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @department.name %>
+<p id="notice">
+	<%= notice %>
 </p>
 
 <p>
-  <b>College</b>
-  <%= @department.college.name %>
+	<b>Name:</b>
+	<%= @department.name %>
+</p>
+
+<p>
+	<b>College</b>
+	<%= @department.college.name %>
 </p>
 
 <form action="/newgroup" method="post" >
-  <input type="hidden" name="department[id]" value=<%= @department.college.id %> />
-  <input class="btn btn-large btn-primary" name="commit" type="submit" value="Create group" />
+	<input type="hidden" name="department[id]" value=<%= @department.college.id %> />
+	<input class="btn btn-large btn-primary" name="commit" type="submit" value="Create group" />
 </form>

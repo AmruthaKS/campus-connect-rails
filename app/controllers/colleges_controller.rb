@@ -17,6 +17,9 @@ class CollegesController < ApplicationController
 
   def show
     @college = College.find(params[:id])
+    @micropost = current_user.microposts.build if signed_in?
+   
+     @feed_items = @college.microposts.paginate(:page => params[:page])
   end
 
   def create_department

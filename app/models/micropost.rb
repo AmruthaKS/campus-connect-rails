@@ -1,5 +1,5 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content, :user_id, :college_id, :department_id, :group_id
   belongs_to :user
 
   has_many :comments, :dependent => :destroy

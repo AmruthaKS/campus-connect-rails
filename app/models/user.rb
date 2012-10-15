@@ -23,9 +23,14 @@ class User < ActiveRecord::Base
                                    :dependent =>   :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
 
-  has_many :departments, :foreign_key => "admin_id", :class_name => "Department"
-  has_many :colleges, :foreign_key => "admin_id", :class_name => "College"
-  has_many :groups, :foreign_key => "admin_id", :class_name => "Group"
+  has_many :created_departments, :foreign_key => "admin_id", :class_name => "Department"
+  has_many :created_colleges, :foreign_key => "admin_id", :class_name => "College"
+  has_many :created_groups, :foreign_key => "admin_id", :class_name => "Group"
+  
+  has_many :user_colleges, :dependent => :destroy
+  has_many :colleges, :through => :user_colleges, :source => :college
+  has_many :departments, :through => :user_colleges, :source => :department
+  has_many :groups, :through => :user_colleges, :source => :group
 
   before_save { |user| user.email = email.downcase }
   validates(:name, :length  => {:maximum => 50})

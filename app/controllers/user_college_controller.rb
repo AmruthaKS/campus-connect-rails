@@ -1,0 +1,4 @@
+class UserCollegeController < ApplicationController
+
+
+end

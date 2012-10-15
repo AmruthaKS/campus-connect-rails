@@ -1,0 +1,12 @@
+<a href="#">
+  <%= college_image(@college, 50) %>
+</a>
+<h1>
+  <%= @college.name %>
+</h1>
+<span>
+  <%= link_to "About college", "#" %>
+</span>
+<span>
+  <%= pluralize(@college.microposts.count, "micropost") %>
+</span>

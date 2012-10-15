@@ -1,56 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @college.name %>
-</p>
-
-<p>
-  <b>Address1:</b>
-  <%= @college.address1 %>
-</p>
-
-<p>
-  <b>Address2:</b>
-  <%= @college.address2 %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @college.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @college.state %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%= @college.country %>
-</p>
-
-<p>
-  <b>Zip code:</b>
-  <%= @college.zip_code %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @college.phone %>
-</p>
-
-<p>
-  <b>Contact email:</b>
-  <%= @college.contact_email %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= @college.website %>
-</p>
-
-<form action="/newdept" method="post" >
-  <input type="hidden" name="college[id]" value=<%= @college.id %> />
-   <input class="btn btn-large btn-primary" name="commit" type="submit" value="Create department" />
-</form>
+<% if signed_in? %>
+<div class="row">
+	<aside class="span4 left_bar">
+		<section>
+			<%= render 'colleges/college_info' %>
+		</section>
+		<section>
+			<%= render 'colleges/college_stats' %>
+			<%= render 'colleges/college_details'%>
+			<% if is_admin_for_college?(@college.id, current_user.id) %>
+			<form action="/newdept" method="post" >
+				<input type="hidden" name="college[id]" value=<%= @college.id %> />
+				<input class="btn btn-large btn-primary" name="commit" type="submit" value="Create department" />
+			</form>
+			<% end %>
+		</section>
+	</aside>
+	<div class="span8">
+		<% if has_write_access_for_college?(@college.id, current_user.id) %>
+		<section class="post_field">
+			<%= render 'colleges/post_form' %>
+		</section>
+		<% end %>
+		<%= render 'shared/feed' %>
+	</div>
+</div>
+<% else %>
+<%= redirect_to root_url %>
+<% end %>
