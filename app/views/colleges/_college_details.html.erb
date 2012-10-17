@@ -1,51 +1,18 @@
 <p id="notice"><%= notice %></p>
-
+<div class="college_details">
 <p>
   <b>Name:</b>
   <%= @college.name %>
 </p>
 
 <p>
-  <b>Address1:</b>
-  <%= @college.address1 %>
+  <b>Address:</b>
+  <%= @college.address1 + ", " + @college.address2 + @college.city + ", " + @college.state + ", " + @college.country + "-" + @college.zip_code %>
 </p>
 
 <p>
-  <b>Address2:</b>
-  <%= @college.address2 %>
+  <b>Contact :</b>
+  <%= "Ph:" + @college.phone + " email:" + @college.contact_email + "Website:" + @college.website %>
 </p>
 
-<p>
-  <b>City:</b>
-  <%= @college.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @college.state %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%= @college.country %>
-</p>
-
-<p>
-  <b>Zip code:</b>
-  <%= @college.zip_code %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @college.phone %>
-</p>
-
-<p>
-  <b>Contact email:</b>
-  <%= @college.contact_email %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= @college.website %>
-</p>
+</div>

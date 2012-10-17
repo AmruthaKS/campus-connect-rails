@@ -6,16 +6,15 @@
 		</section>
 		<section>
 			<%= render 'colleges/college_stats' %>
-			<%= render 'colleges/college_details'%>
-			<% if is_admin_for_college?(@college.id, current_user.id) %>
-			<form action="/newdept" method="post" >
-				<input type="hidden" name="college[id]" value=<%= @college.id %> />
-				<input class="btn btn-large btn-primary" name="commit" type="submit" value="Create department" />
-			</form>
-			<% end %>
+			
 		</section>
 	</aside>
 	<div class="span8">
+		<%= render 'colleges/college_details'%>
+		<% if is_admin_for_college?(@college.id, current_user.id) %>
+			<%= render 'colleges/create_dept'%>
+		<% end %>
+			
 		<% if has_write_access_for_college?(@college.id, current_user.id) %>
 		<section class="post_field">
 			<%= render 'colleges/post_form' %>
