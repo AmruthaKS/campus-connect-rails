@@ -8,7 +8,7 @@ class CollegesController < ApplicationController
   def create
     @college = College.new(params[:college])
     if @college.save
-       flash.now[:success] = "Welcome, your college been registered successfully!"
+       flash.now[:success] = "Welcome, your college been registered successfully!!!"
        redirect_to @college
     else
       render new
