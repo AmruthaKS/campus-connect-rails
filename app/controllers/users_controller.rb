@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash.now[:success] = "Welcome to the Comapus Connect!"
+      flash.now[:success] = "Welcome to the Comapus Connect!!"
       redirect_to @user
     else
       render 'new'
