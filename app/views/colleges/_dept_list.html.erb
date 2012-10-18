@@ -1,0 +1,9 @@
+<% if @college.departments.empty? %>
+<ol class="groups_collegs">
+	<% for department in @college.departments %>
+	<li>
+		<%= link_to department.name, department %>
+	</li>
+	<% end %>
+</ol>
+<% end %>

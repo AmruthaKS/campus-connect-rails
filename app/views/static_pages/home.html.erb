@@ -14,12 +14,15 @@
       	<%= render 'shared/show_groups' %>
       </section>
     </aside>
-    <div class="span8">
+    <div class="span8 feed_content">
      <section class="post_field">
         <%= render 'shared/micropost_form' %>
       </section>
       <%= render 'shared/feed' %>
     </div>
+    <aside class="span4 right_bar">
+    	<%= render 'shared/misc' %>
+    </aside>
   </div>
 <% else %>
   <div class="center hero-unit">
