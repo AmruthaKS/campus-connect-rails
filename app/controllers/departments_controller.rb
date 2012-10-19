@@ -17,6 +17,9 @@ class DepartmentsController < ApplicationController
 
   def show
     @department = Department.find(params[:id])
+    @micropost = current_user.microposts.build if signed_in?
+    @feed_items = @department.microposts.paginate(:page => params[:page])
+    store_location
   end
 
 end

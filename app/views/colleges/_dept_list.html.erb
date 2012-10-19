@@ -1,4 +1,4 @@
-<% if @college.departments.empty? %>
+<% if @college.departments.any? %>
 <ol class="groups_collegs">
 	<% for department in @college.departments %>
 	<li>

@@ -1,18 +1,24 @@
-<p id="notice">
-	<%= notice %>
-</p>
-
-<p>
-	<b>Name:</b>
-	<%= @department.name %>
-</p>
-
-<p>
-	<b>College</b>
-	<%= @department.college.name %>
-</p>
-
-<form action="/newgroup" method="post" >
-	<input type="hidden" name="department[id]" value=<%= @department.college.id %> />
-	<input class="btn btn-large btn-primary" name="commit" type="submit" value="Create group" />
-</form>
+<% if signed_in? %>
+<div class="row">
+	<aside class="span4 left_bar">
+		<section>
+			<%= render 'departments/department_info' %>
+		</section>
+	</aside>
+	<div class="span8">
+		<%= render 'departments/department_name_header'%>
+		<% if is_admin_for_dept?(@department.id, current_user.id) %>
+			<%= render 'departments/create_group'%>
+		<% end %>
+			
+		<% if has_write_access_for_dept?(@department.id, current_user.id) %>
+		<section class="post_field">
+			<%= render 'departments/post_form' %>
+		</section>
+		<% end %>
+		<%= render 'shared/feed' %>
+	</div>
+</div>
+<% else %>
+<%= redirect_to root_url %>
+<% end %>
