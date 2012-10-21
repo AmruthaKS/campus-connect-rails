@@ -1,0 +1,9 @@
+<% if @department.groups.any? %>
+<ol class="groups_collegs">
+	<% for group in @department.groups %>
+	<li>
+		<%= link_to group.name, group %>
+	</li>
+	<% end %>
+</ol>
+<% end %>

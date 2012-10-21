@@ -1,5 +1,10 @@
 module UserCollegeHelper
   
+  def get_admins_for_college()
+    college_admin_ids = "Select user_id form UserCollege where college_priv > 2"
+    admins_result = User.where("id in (:college_admin_ids)", college_admin_ids)
+  end
+  
   def get_priv_for_college(college_id, user_id)
     college_priv = UserCollege.where("college_id = ? and user_id = ?", college_id, user_id).select("college_priv")
     college_pr = college_priv.first
