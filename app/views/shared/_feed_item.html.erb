@@ -1,4 +1,4 @@
-<li id="<%= feed_item.id %>">
+<li id="<%= "microspost_" + feed_item.id.to_s %>">
   <%= gravatar_for feed_item.user, 50 %>
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>

@@ -8,8 +8,13 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_back_or(root_url)
+       respond_to do |format|
+      format.html {
+        flash[:success] = "Micropost created!"
+        redirect_back_or(root_url)
+      }
+      format.js
+      end
     else
       render 'static_pages/home'
     end
@@ -17,7 +22,12 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    redirect_to root_url
+    respond_to do |format|
+    format.html {
+      redirect_to root_url
+    }
+    format.js
+    end
   end
 
   private

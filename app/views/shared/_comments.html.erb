@@ -1,14 +1,15 @@
-<%  if @micro_post.comments.any? %>
-
-<ol class="comments">
+<div class="comments" id="comments_post_<%= @micro_post.id%>">
+	
+<ol>
   <% @comment_items = @micro_post.comments %>
   <%= render :partial => 'shared/comment_item', :collection=> @comment_items %>
 </ol>
-<% end %>
-<div class="comments">
+
 <span>
    <% @comment = Comment.new(:micropost_id => @micro_post.id) %>
    <% @comment.user_id = current_user.id %>
    <%= render 'shared/comment_form' %>
 </span>
+
 </div>
+

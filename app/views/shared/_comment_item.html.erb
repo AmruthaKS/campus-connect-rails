@@ -1,4 +1,4 @@
-<li id="<%= comment_item.id %>">
+<li id="<%= "comment_" + comment_item.id.to_s %>">
   <div class="comment_section">
     <div class="comment_image">
     <%= gravatar_for comment_item.user, 30 %>
