@@ -26,13 +26,18 @@ module UserCollegeHelper
   end
   
   def get_priv_for_dept(dept_id, user_id)
+    puts dept_id.to_s + "000000" + user_id.to_s
     dept_priv = UserCollege.where("department_id = ? and user_id = ?", dept_id, user_id).select("dept_priv")
-    dept_pr = dept_priv.first
+   dept_priv.first
   end
   
   def is_admin_for_dept?(dept_id, user_id)
     dept_pr = get_priv_for_dept dept_id, user_id
-    dept_pr[:dept_priv] > 2
+    if(dept_pr.nil?)
+      false
+    else
+    dept_pr[:dept_priv].to_i > 2
+    end
   end
   
   def has_write_access_for_dept?(dept_id, user_id)

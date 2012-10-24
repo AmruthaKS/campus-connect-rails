@@ -28,9 +28,9 @@ class User < ActiveRecord::Base
   has_many :created_groups, :foreign_key => "admin_id", :class_name => "Group"
   
   has_many :user_colleges, :dependent => :destroy
-  has_many :colleges, :through => :user_colleges, :source => :college
-  has_many :departments, :through => :user_colleges, :source => :department
-  has_many :groups, :through => :user_colleges, :source => :group
+  has_many :colleges, :through => :user_colleges, :source => :college, :uniq => true
+  has_many :departments, :through => :user_colleges, :source => :department, :uniq => true
+  has_many :groups, :through => :user_colleges, :source => :group, :uniq => true
 
   before_save { |user| user.email = email.downcase }
   validates(:name, :length  => {:maximum => 50})

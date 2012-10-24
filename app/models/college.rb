@@ -8,5 +8,5 @@ class College < ActiveRecord::Base
   has_many :microposts, :dependent => :destroy
   
   has_many :user_colleges, :dependent => :destroy
-  has_many :users, :through => :user_colleges, :source => :user
+  has_many :users, :through => :user_colleges, :source => :user, :uniq => true
 end
