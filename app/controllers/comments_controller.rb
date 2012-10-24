@@ -22,7 +22,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to root_url
+    respond_to do |format|
+        format.html {
+          redirect_to root_url
+        }
+        format.js
+      end
   end
 
   private
