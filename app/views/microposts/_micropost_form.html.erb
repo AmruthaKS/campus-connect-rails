@@ -1,7 +1,7 @@
 <%= form_for(@micropost, :remote => true) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="post_field">
-    <%= f.text_area :content, :tabindex =>"1", :placeholder => "Compose new micropost...", :id => "text_area" , :wrap=> "off" %>
+    <%= f.text_area :content, :placeholder => "Compose new micropost..." %>
   </div>
   <%= f.submit "Post", :class => "btn btn-large btn-primary" %>
 <% end %>

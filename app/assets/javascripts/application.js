@@ -14,12 +14,3 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-
-$('#post_form > form')[0].delegate('input','submit',function(e){
-    if (e.keyCode === 13) 
-    	$('#post_form > form')[0].trigger('submit');
-});
-
-$(function() {
-	   $('#text_area').autogrow();
-});
