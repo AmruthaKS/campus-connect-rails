@@ -59,4 +59,5 @@ class User < ActiveRecord::Base
   def create_remember_token
     self.remember_token = SecureRandom.hex(64)
   end
+  
 end
