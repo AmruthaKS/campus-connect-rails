@@ -17,5 +17,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+     @micropost = current_user.microposts.build
+    @feed_items = @group.microposts.paginate(:page => params[:page])
+    store_location
   end
 end
