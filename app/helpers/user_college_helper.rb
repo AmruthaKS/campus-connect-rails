@@ -49,4 +49,8 @@ module UserCollegeHelper
     dept_pr[:dept_priv] > 0
   end
   
+  def is_dept_and_group_null?(user_id , college_id)
+    records = UserCollege.where("user_id = ?, and college_id = ? and group_id is null and department_id is null", user_id , college_id)
+    records.nil?
+  end
 end

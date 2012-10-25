@@ -8,6 +8,10 @@ class CollegesController < ApplicationController
   def create
     @college = College.new(params[:college])
     if @college.save
+      @user_college_priv = @college.user_colleges.build
+      @user_college_priv.user_id = current_user.id
+      @user_college_priv.college_priv = 4
+      @user_college_priv.save!
        flash.now[:success] = "Welcome, your college been registered successfully!!!"
        redirect_to @college
     else
