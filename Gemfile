@@ -9,7 +9,6 @@ gem 'json'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem "jquery-rails", "~> 2.1.3"
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
@@ -27,4 +26,5 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'jquery-rails'
 

@@ -1,10 +1,6 @@
 class CollegesController < ApplicationController
   before_filter :signed_in_user, :only => [:create]
 
-def index
-  @colleges = College.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
-end
-
   def new
     @college = College.new
   end
