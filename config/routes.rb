@@ -8,9 +8,12 @@ StaticTest::Application.routes.draw do
   resources :microposts, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
-  resources :colleges
+  resources :colleges do
+    get :autocomplete_college_name,  :on => :collection
+  end
   resources :departments
   resources :groups
+  resources :user_colleges
   
   root :to => 'static_pages#home'
   match '/help',    :to => 'static_pages#help'

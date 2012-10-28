@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user_college = @user.user_colleges.build
   end
 
   def update

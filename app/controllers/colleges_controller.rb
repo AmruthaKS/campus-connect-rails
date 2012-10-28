@@ -1,4 +1,5 @@
 class CollegesController < ApplicationController
+  autocomplete :college, :name
   before_filter :signed_in_user, :only => [:create]
 
   def new

@@ -23,4 +23,11 @@
     <%= gravatar_for @user, 50 %>
     <a href="#">change</a>
   </div>
+  
+  <div class="span6 offset3 autoTextHeight">
+  	<%= form_for(@user_college) do |f| %>
+  	 <%= f.label :college_name, "College Name" %>
+      <%= f.autocomplete_field :college, autocomplete_college_name_colleges_path %>
+      <% end %>
+  	</div>
 </div>

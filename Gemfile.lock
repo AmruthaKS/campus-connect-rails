@@ -93,6 +93,8 @@ GEM
       activesupport (= 3.2.8)
       bundler (~> 1.0)
       railties (= 3.2.8)
+    rails3-jquery-autocomplete (1.0.10)
+      rails (~> 3.0)
     railties (3.2.8)
       actionpack (= 3.2.8)
       activesupport (= 3.2.8)
@@ -159,6 +161,7 @@ DEPENDENCIES
   json
   mysql2
   rails (= 3.2.8)
+  rails3-jquery-autocomplete (= 1.0.10)
   rspec-rails (= 2.11.0)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
