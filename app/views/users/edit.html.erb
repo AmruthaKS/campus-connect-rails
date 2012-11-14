@@ -26,15 +26,16 @@
   
   <div class="span6 offset3 autoTextHeight">
   	<%= form_for(@user_college) do |f| %>
+  	<%= f.hidden_field :college_id, :value => "" %>
   	 <%= f.label :college_name, "College Name" %>
       <%= f.autocomplete_field :college, autocomplete_college_name_colleges_path, :required => "true" %>
        <div id="dept_field" style="display: none">
        <%= f.label :department %>
-       <%= f.select :department,options_for_select([[]]) %>
+       <%= f.select :department_id,options_for_select([[]]) %>
       </div>
       <div id="group_field" style="display: none">
        <%= f.label :group %>
-       <%= f.select :group, options_for_select([[]]) %>
+       <%= f.select :group_id, options_for_select([[]]) %>
       </div>
       <%= f.submit "Add", :class => "btn btn-large btn-primary" %>
       <% end %>

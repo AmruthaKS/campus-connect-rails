@@ -3,13 +3,9 @@
   <% for department in @college.departments %>
   	var option = new Option('<%= department.name %>', '<%= department.id %>')
   	option.id = 'dept_<%= department.id %>'
-    $('#user_college_department').append(option);
+    $('#user_college_department_id').append(option);
   <% end %>
 <% else %>
 <% end %>
 
-var hiddenInput = document.createElement("input");
-hiddenInput.setAttribute("type", "hidden");
-hiddenInput.setAttribute("name", "user_college[college_id]");
-hiddenInput.setAttribute("value", "<%= @college.id %>");
-$('#new_user_college').append(hiddenInput);
+$('#user_college_college_id').val('<%= @college.id %>');

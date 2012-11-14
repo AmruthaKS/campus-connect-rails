@@ -18,7 +18,7 @@ StaticTest::Application.routes.draw do
      get :auto_fetch_groups, :on => :collection
   end
   resources :groups
-  resources :user_colleges
+  resources :user_colleges, :only => [:create]
   
   root :to => 'static_pages#home'
   match '/help',    :to => 'static_pages#help'
