@@ -1,4 +1,14 @@
 class DepartmentsController < ApplicationController
+  
+  def auto_fetch_groups
+    @department = Department.find_by_id(params[:dept_id])
+      respond_to do |format|
+        format.html {
+        }
+        format.js
+      end
+  end
+  
   def new
     @department = Department.new
     college_params = params[:college]

@@ -1,0 +1,8 @@
+<% if !@department.groups.blank? %>
+  <% for group in @department.groups %>
+  	var option = new Option('<%= group.name %>', '<%= group.id %>')
+  	option.id = 'group_<%= group.id %>'
+    $('#user_college_group').append(option);
+  <% end %>
+<% else %>
+<% end %>

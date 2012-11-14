@@ -58,6 +58,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
    
+   def info
+     @user = User.find(params[:id])
+     render 'show_info'
+   end
     
  private
    def signed_in_user

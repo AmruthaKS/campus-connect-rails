@@ -14,3 +14,37 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(function () {  
+  var companyList = $("#user_college_college").autocomplete({ 
+      change: function() {
+          alert('changed');
+      }
+   });
+});
+
+
+$(document).ready(function() {
+ $('#ui-id-1').click(function() {
+	//Add ajax call - to fetch the depts
+	if($('#user_college_college').val() != null && $('#user_college_college').val() != "")
+	$.get("/colleges/auto_fetch_departments", { college_name: $('#user_college_college').val()},
+   function(data){
+     alert("Data Loaded: " + data);
+   }, "script");
+   
+ 	$('#dept_field').show();
+ });
+});
+
+$(document).ready(function() {
+$('#dept_field').change(function() {
+	$.get("/departments/auto_fetch_groups", { dept_id: $('#user_college_department').val()},
+   function(data){
+     alert("Data Loaded: " + data);
+   }, "script");
+   
+   $('#group_field').show();
+});
+});
+

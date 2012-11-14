@@ -2,6 +2,15 @@ class CollegesController < ApplicationController
   autocomplete :college, :name
   before_filter :signed_in_user, :only => [:create]
 
+def auto_fetch_departments
+  @college = College.find(:first, :conditions => { :name => params[:college_name]})
+      respond_to do |format|
+        format.html {
+        }
+        format.js
+      end
+end
+
   def new
     @college = College.new
   end
@@ -25,10 +34,6 @@ class CollegesController < ApplicationController
     @micropost = current_user.microposts.build if signed_in?
     @feed_items = @college.microposts.paginate(:page => params[:page])
     store_location
-  end
-
-  def create_department
-    redirect_to create_department_url
   end
   
 private

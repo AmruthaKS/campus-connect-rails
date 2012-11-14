@@ -1,0 +1,8 @@
+
+    <ol class="groups_collegs favorite_links">
+      <% for college in @user.colleges %>
+      <li>
+       <%= link_to college.name, college %>
+       </li>
+      <% end %>
+      </ol>

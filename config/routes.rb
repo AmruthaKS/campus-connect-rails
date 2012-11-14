@@ -1,17 +1,22 @@
 StaticTest::Application.routes.draw do
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :info
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
+  
   resources :colleges do
     get :autocomplete_college_name,  :on => :collection
+    get :auto_fetch_departments, :on => :collection
   end
-  resources :departments
+  
+  resources :departments do
+     get :auto_fetch_groups, :on => :collection
+  end
   resources :groups
   resources :user_colleges
   
