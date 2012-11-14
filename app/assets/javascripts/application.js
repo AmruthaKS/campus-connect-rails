@@ -15,36 +15,64 @@
 //= require bootstrap
 //= require_tree .
 
-$(function () {  
-  var companyList = $("#user_college_college").autocomplete({ 
-      change: function() {
-          alert('changed');
-      }
-   });
-});
-
-
-$(document).ready(function() {
- $('#ui-id-1').click(function() {
-	//Add ajax call - to fetch the depts
-	if($('#user_college_college').val() != null && $('#user_college_college').val() != "")
-	$.get("/colleges/auto_fetch_departments", { college_name: $('#user_college_college').val()},
-   function(data){
-     alert("Data Loaded: " + data);
-   }, "script");
-   
- 	$('#dept_field').show();
- });
+$(function() {
+	var companyList = $("#user_college_college").autocomplete({
+		change : function() {
+			alert('changed');
+		}
+	});
 });
 
 $(document).ready(function() {
-$('#dept_field').change(function() {
-	$.get("/departments/auto_fetch_groups", { dept_id: $('#user_college_department').val()},
-   function(data){
-     alert("Data Loaded: " + data);
-   }, "script");
-   
-   $('#group_field').show();
-});
+
+	$('#ui-id-1').click(function() {
+		auto_fetch_depts();
+	});
+
+	$('#dept_field').change(function() {
+		remove_all_options('#user_college_group');
+		
+		$.get("/departments/auto_fetch_groups", {
+			dept_id : $('#user_college_department').val()
+		}, function(data) {
+		}, "script");
+
+		$('#group_field').show();
+	});
+	
+	$('#user_college_college').onEnter(function() {
+		auto_fetch_depts();
+	});
+	
+	$('#user_college_college').bind('input', function() {
+   		remove_all_options('#user_college_department');
+   		remove_all_options('#user_college_group');
+	} );
 });
 
+jQuery.fn.onEnter = function(callback) {
+	this.keyup(function(e) {
+		if (e.keyCode == 13) {
+			e.preventDefault();
+			if ( typeof callback == 'function')
+				callback.apply(this);
+		}
+	});
+	return this;
+}
+function auto_fetch_depts() {
+	remove_all_options('#user_college_department');
+	if ($('#user_college_college').val() != null && $('#user_college_college').val() != "")
+		$.get("/colleges/auto_fetch_departments", {
+			college_name : $('#user_college_college').val()
+		}, function(data) {
+		}, "script");
+
+	$('#dept_field').show();
+}
+
+function remove_all_options(element){
+	$(element)
+    	.empty()
+    	.append('<option selected="selected" value=""></option>');
+}

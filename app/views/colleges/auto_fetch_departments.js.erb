@@ -12,5 +12,4 @@ var hiddenInput = document.createElement("input");
 hiddenInput.setAttribute("type", "hidden");
 hiddenInput.setAttribute("name", "user_college[college_id]");
 hiddenInput.setAttribute("value", "<%= @college.id %>");
-alert('adding hidden')
 $('#new_user_college').append(hiddenInput);
