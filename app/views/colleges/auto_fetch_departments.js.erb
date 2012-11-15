@@ -5,7 +5,21 @@
   	option.id = 'dept_<%= department.id %>'
     $('#user_college_department_id').append(option);
   <% end %>
+  
+  
+  <% if !@college.departments.first.groups.blank? %>
+  <% for group in @college.departments.first.groups %>
+  	var option = new Option('<%= group.name %>', '<%= group.id %>')
+  	option.id = 'group_<%= group.id %>'
+    $('#user_college_group_id').append(option);
+  
+  <% end %>
+<% else %>
+<% end %>
 <% else %>
 <% end %>
 
+
+
 $('#user_college_college_id').val('<%= @college.id %>');
+$('#user_college_submit').removeAttr('disabled');

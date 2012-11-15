@@ -29,15 +29,15 @@
   	<%= f.hidden_field :college_id, :value => "" %>
   	 <%= f.label :college_name, "College Name" %>
       <%= f.autocomplete_field :college, autocomplete_college_name_colleges_path, :required => "true" %>
-       <div id="dept_field" style="display: none">
+       <div id="dept_field">
        <%= f.label :department %>
-       <%= f.select :department_id,options_for_select([[]]) %>
+       <%= f.select :department_id,options_for_select([]), :required => "true" %>
       </div>
-      <div id="group_field" style="display: none">
+      <div id="group_field">
        <%= f.label :group %>
-       <%= f.select :group_id, options_for_select([[]]) %>
+       <%= f.select :group_id, options_for_select([]), :required => "true" %>
       </div>
-      <%= f.submit "Add", :class => "btn btn-large btn-primary" %>
+      <%= f.submit "Add", :class => "btn btn-large btn-primary", :disabled => "true", :id => "user_college_submit" %>
       <% end %>
   	</div>
 </div>

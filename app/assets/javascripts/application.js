@@ -45,6 +45,7 @@ $(document).ready(function() {
 	});
 	
 	$('#user_college_college').bind('input', function() {
+		$('#user_college_submit').attr('disabled','disabled');
    		remove_all_options('#user_college_department_id');
    		remove_all_options('#user_college_group_id');
 	} );
@@ -62,17 +63,16 @@ jQuery.fn.onEnter = function(callback) {
 }
 function auto_fetch_depts() {
 	remove_all_options('#user_college_department_id');
-	if ($('#user_college_college').val() != null && $('#user_college_college').val() != "")
+	if ($('#user_college_college').val() != null && $('#user_college_college').val() != "no existing match"){
 		$.get("/colleges/auto_fetch_departments", {
 			college_name : $('#user_college_college').val()
 		}, function(data) {
 		}, "script");
-
+	}
 	$('#dept_field').show();
 }
 
 function remove_all_options(element){
 	$(element)
-    	.empty()
-    	.append('<option selected="selected" value=""></option>');
+    	.empty();
 }

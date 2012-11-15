@@ -84,5 +84,5 @@ module UserCollegesHelper
     puts !records.nil?
     !records.empty?
   end
-  
+ 
 end
