@@ -1,4 +1,5 @@
 StaticTest::Application.routes.draw do
+
   resources :users do
     member do
       get :following, :followers, :info
@@ -21,6 +22,10 @@ StaticTest::Application.routes.draw do
   resources :user_colleges, :only => [:create]
   
   root :to => 'static_pages#home'
+  match '/channel.html', :to => 'static_pages#channel'
+  match '/fblogin', :to => 'static_pages#fblogin'
+  match '/fbredirect', :to => 'static_pages#fb_redirect'
+  match '/fb_token', :to => 'static_pages#fb_token'
   match '/help',    :to => 'static_pages#help'
   match '/about',   :to => 'static_pages#about'
   match '/signup',  :to => 'users#new'
@@ -28,6 +33,8 @@ StaticTest::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy', :via => :delete
   match '/newdept', :to => 'departments#new'
   match '/newgroup', :to => 'groups#new'
+  match '/fb_login', :to => 'fb#login'
+  match '/fb_redirect', :to => 'fb#redirect'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

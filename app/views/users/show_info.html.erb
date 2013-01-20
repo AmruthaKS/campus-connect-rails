@@ -14,16 +14,15 @@
       	<%= render 'users/user_links'%>
       </section>
   </aside>
+
+  	
   <div class="span8 feed_content">
-    
-    <% if @user.colleges.any? %>
-      <h3>Colleges</h3>
-      <ol class="microposts user_colleges_list">
-        <%= render 'users/list_colleges' %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
-  </div>
+  	<%= render 'user_details_top' %>
+  	<% if @user.colleges.any? %>
+      <h3>Education:</h3>
+      <%= render 'user_colleges'%>
+   <% end %>
+    </div>
   <aside class="span4 right_bar">
     	<%= render 'shared/misc' %>
   </aside>

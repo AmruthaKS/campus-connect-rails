@@ -10,6 +10,10 @@ gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'rails3-jquery-autocomplete', '1.0.10'
+gem  'httparty'
+gem  'em-http-request'
+gem  'rest-client'
+gem  'fbgraph'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

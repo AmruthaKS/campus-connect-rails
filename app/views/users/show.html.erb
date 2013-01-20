@@ -17,8 +17,10 @@
       	<%= render 'users/list_colleges'%>
      </section>
   </aside>
-  <div class="span8 feed_content">
+  <div id="main_content" class="span8 feed_content">
+  
     <%= render 'follow_form' if signed_in? %>
+    	<%= render 'user_details_top' %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">

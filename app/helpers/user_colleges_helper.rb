@@ -5,6 +5,14 @@ module UserCollegesHelper
     admins_result = User.where("id in (:college_admin_ids)", college_admin_ids)
   end
   
+  def get_user_college_with_details 
+     query = "select c.id as college_id, c.name, d.id as dept_id, d.name, g.id as group_id, g.name 
+                          from colleges c, departments d, groups g, user_colleges a 
+                          where a.user_id = ? and c.id = a.college_id and d.id = a.department_id and g.id = a.group_id"
+                          
+     user_college_details = User.where("id in (:college_admin_ids)", college_admin_ids)
+  end
+  
   def get_priv_for_college(college_id, user_id)
     college_priv = UserCollege.where("college_id = ? and user_id = ?", college_id, user_id).select("college_priv")
     college_pr = college_priv.first
