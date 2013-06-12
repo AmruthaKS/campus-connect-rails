@@ -1,0 +1,24 @@
+<div class="user_colleges">
+	<!-- add logic to add college-->
+<%if @user.user_colleges.any?%>
+	<% for user_college in @user.user_colleges %>
+	
+	<div class="user_college">
+		<div class="user_college_year">
+			<%= college.start_date %>
+		</div>
+		<div class="user_college_image">
+			<%= college_image(college, 50) %>
+		</div>
+		
+		<div class="user_college_details">
+			<%= link_to  College.find_by_id(user_college.college_id), college %>
+		</div>
+	</div>
+</div>
+      <% end %>
+<%end%>
+
+      
+     <!--  <%= link_to college.name, college %> -->
+     

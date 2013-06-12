@@ -1,0 +1,5 @@
+<%if @user.colleges.any?%>
+      <% for college in @user.colleges %>
+       <%= link_to college.name, college %>
+      <% end %>
+<%end%>
