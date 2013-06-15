@@ -20,3 +20,11 @@ pickle-email-*.html
 /tmp
 
 .idea/*
+
+*.properties
+
+nbproject/project.xml
+
+mysql-connector-license.txt
+
+mysql-connector-java-5.1.18-bin.jar
