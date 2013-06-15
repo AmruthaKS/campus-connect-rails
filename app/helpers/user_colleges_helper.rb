@@ -20,7 +20,11 @@ module UserCollegesHelper
   
   def is_admin_for_college?(college_id, user_id)
     college_pr = get_priv_for_college college_id, user_id
-    college_pr[:college_priv] > 2
+    if(college_pr.nil?)
+      0
+    else 
+      college_pr[:college_priv] > 2
+    end
   end
   
   def has_write_access_for_college?(college_id, user_id)
