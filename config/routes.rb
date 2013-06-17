@@ -1,5 +1,7 @@
 StaticTest::Application.routes.draw do
 
+  get "events/new"
+
   resources :users do
     member do
       get :following, :followers, :info
