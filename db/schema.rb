@@ -80,14 +80,16 @@ ActiveRecord::Schema.define(:version => 20130613085909) do
   create_table "user_colleges", :force => true do |t|
     t.integer  "user_id"
     t.integer  "college_id"
-    t.integer  "college_priv",  :limit => 2
+    t.integer  "college_priv",  :limit => 2, :default => 0
     t.integer  "department_id"
-    t.integer  "dept_priv",     :limit => 2
+    t.integer  "dept_priv",     :limit => 2, :default => 0
     t.integer  "group_id"
-    t.integer  "group_priv",    :limit => 2
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "role"
+    t.integer  "group_priv",    :limit => 2, :default => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "role"
   end
 
   create_table "users", :force => true do |t|

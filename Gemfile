@@ -14,7 +14,7 @@ gem  'httparty'
 gem  'em-http-request'
 gem  'rest-client'
 gem  'fbgraph'
-
+gem  'cassandra'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
 end
