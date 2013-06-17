@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+     @micropost = current_user.microposts.build(params[:micropost])
+     @user = User.find(params[:id])
      @microposts = @user.microposts.paginate(:page => params[:page])
   end
 
@@ -62,6 +63,8 @@ class UsersController < ApplicationController
      @user = User.find(params[:id])
      render 'show_info'
    end
+   
+   
     
  private
    def signed_in_user
