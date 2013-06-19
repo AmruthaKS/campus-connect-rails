@@ -1,0 +1,29 @@
+<h1>Listing inboxes</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>User</th>
+    <th>Notification</th>
+    <th>Checked</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @inboxes.each do |inbox| %>
+  <tr>
+    <td><%= inbox.user_id %></td>
+    <td><%= inbox.user_id %></td>
+    <td><%= inbox.notification_id %></td>
+    <td><%= inbox.checked %></td>
+    <td><%= link_to 'Show', inbox %></td>
+    <td><%= link_to 'Edit', edit_inbox_path(inbox) %></td>
+    <td><%= link_to 'Destroy', inbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Inbox', new_inbox_path %>

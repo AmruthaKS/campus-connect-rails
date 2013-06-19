@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @notification.description %>
+</p>
+
+<p>
+  <b>Notification type:</b>
+  <%= @notification.notification_type %>
+</p>
+
+<p>
+  <b>Tcontent:</b>
+  <%= @notification.tContent_id %>
+</p>
+
+<p>
+  <b>Tcontent type:</b>
+  <%= @notification.tContent_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

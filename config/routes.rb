@@ -1,5 +1,11 @@
 StaticTest::Application.routes.draw do
 
+  resources :inboxes
+
+  resources :notifications
+
+  resources :events
+
   get "events/new"
 
   resources :users do
