@@ -2,7 +2,7 @@ StaticTest::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :info, :notifications
+      get :following, :followers, :info, :notifications, :events
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]

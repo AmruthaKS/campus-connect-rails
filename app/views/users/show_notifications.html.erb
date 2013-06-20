@@ -1,6 +1,6 @@
 <% if current_user?(@user) %>
     <section >
-      <% current_user.inbox_notifications.each do |notification| %>
+      <% @user.inbox_notifications.each do |notification| %>
         <li>
             <p ><%= notification.notification.description  %></p>
         </li>
