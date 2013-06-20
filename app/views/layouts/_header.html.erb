@@ -22,6 +22,16 @@
 							<li>
 								<%= link_to "Settings", edit_user_path(current_user) %>
 							</li>
+                            <li class="divider"></li>
+                            <li>
+                              <%= link_to "Notifications", notifications_user_path(current_user) %>
+                            </li>
+
+                            <li>
+                              <%= link_to "Events", events_user_path(current_user) %>
+                            </li>
+
+
 							<li class="divider"></li>
 							<li>
 								<%= link_to "Sign out", signout_path, :method => "delete" %>

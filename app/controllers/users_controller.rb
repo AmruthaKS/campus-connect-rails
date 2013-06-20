@@ -63,9 +63,19 @@ class UsersController < ApplicationController
      @user = User.find(params[:id])
      render 'show_info'
    end
-   
-   
-    
+
+   def notifications
+     @title = "Notifications"
+     @user = User.find(params[:id])
+     render 'show_notifications'
+   end
+
+   def events
+     @title = "Events"
+     @user =  User.find(params[:id])
+     render 'show_events'
+   end
+
  private
    def signed_in_user
       unless signed_in?

@@ -1,0 +1,11 @@
+<% if current_user?(@user) %>
+    <section >
+      <% @user.events.each do |event| %>
+          <li>
+            <p ><%= event.description  %></p>
+          </li>
+      <% end %>
+    </section>
+<% else %>
+    <h1>You think, I am stupid ?? !! </h1>
+<% end %>

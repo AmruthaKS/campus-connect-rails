@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @inbox.user_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @inbox.user_id %>
+</p>
+
+<p>
+  <b>Notification:</b>
+  <%= @inbox.notification_id %>
+</p>
+
+<p>
+  <b>Checked:</b>
+  <%= @inbox.checked %>
+</p>
+
+
+<%= link_to 'Edit', edit_inbox_path(@inbox) %> |
+<%= link_to 'Back', inboxes_path %>
