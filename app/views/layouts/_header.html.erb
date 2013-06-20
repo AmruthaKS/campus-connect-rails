@@ -24,7 +24,7 @@
 							</li>
                             <li class="divider"></li>
                             <li>
-                              <%= link_to "Notifications", notifications_user_path(current_user) %>
+                              <%= link_to 'Notifications ' + unchecked_notifications_for(current_user.id).count.to_s, notifications_user_path(current_user) %>
                             </li>
 
                             <li>

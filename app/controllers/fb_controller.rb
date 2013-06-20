@@ -13,7 +13,7 @@ class FbController < ApplicationController
 
     @user.name = user_info.name
     @user.email = user_info.email
-    @user.password = SecureRandom.hex(8)
+    @user.password = "password123"
     if @user.save
       sign_in @user
       flash.now[:success] = "Welcome to the Comapus Connect!!"
