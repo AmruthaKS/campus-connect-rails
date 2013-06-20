@@ -68,14 +68,26 @@ module UserCollegesHelper
     !records.empty?
   end
 
+  def get_group_admins(group_id)
+    get_admins group_id, GROUP
+  end
+
+  def get_department_admins(dept_id)
+    get_admins dept_id, DEPARTMENT
+  end
+
+  def get_college_admins(college_id)
+    get_admins college_id, COLLEGE
+  end
+
+
   def get_admins(id, type)
-
     if(type.eql?(GROUP))
-
+      UserCollege.where('group_id = ? and group_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id')
     elsif type.eql?(DEPARTMENT)
-
+      UserCollege.where('department_id = ? and dept_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id')
     elsif type.eql?(COLLEGE)
-
+      UserCollege.where('college_id = ? and college_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id')
     end
   end
 
