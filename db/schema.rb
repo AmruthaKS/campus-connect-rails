@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619174548) do
+ActiveRecord::Schema.define(:version => 20130620152716) do
 
   create_table "colleges", :force => true do |t|
     t.string   "name"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20130619174548) do
     t.integer  "event_type"
     t.integer  "tContent_id"
     t.integer  "tContent_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20130619174548) do
     t.integer  "user_id"
     t.integer  "notification_id"
     t.integer  "checked"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "microposts", :force => true do |t|
@@ -89,8 +89,9 @@ ActiveRecord::Schema.define(:version => 20130619174548) do
     t.integer  "notification_type"
     t.integer  "tContent_id"
     t.integer  "tContent_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
   end
 
   create_table "relationships", :force => true do |t|

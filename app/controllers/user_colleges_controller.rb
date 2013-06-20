@@ -20,7 +20,9 @@ class UserCollegesController < ApplicationController
     @event.save
 
     #create a notification for the admins
+
+
+
     redirect_back_or root_url
-  end
-  
+    end
 end
