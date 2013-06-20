@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613085909) do
+ActiveRecord::Schema.define(:version => 20130619174548) do
 
   create_table "colleges", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(:version => 20130613085909) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "description"
+    t.integer  "event_type"
+    t.integer  "tContent_id"
+    t.integer  "tContent_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+  end
+
   create_table "groups", :force => true do |t|
     t.integer  "college_id"
     t.integer  "department_id"
@@ -52,6 +62,14 @@ ActiveRecord::Schema.define(:version => 20130613085909) do
     t.integer  "admin_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "inboxes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.integer  "checked"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "microposts", :force => true do |t|
@@ -65,6 +83,15 @@ ActiveRecord::Schema.define(:version => 20130613085909) do
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "notifications", :force => true do |t|
+    t.string   "description"
+    t.integer  "notification_type"
+    t.integer  "tContent_id"
+    t.integer  "tContent_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"

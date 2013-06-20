@@ -1,10 +1,8 @@
 StaticTest::Application.routes.draw do
 
-  get "events/new"
-
   resources :users do
     member do
-      get :following, :followers, :info
+      get :following, :followers, :info, :notifications, :events
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
@@ -22,7 +20,11 @@ StaticTest::Application.routes.draw do
   end
   resources :groups
   resources :user_colleges, :only => [:create]
-  
+
+  resources :inboxes, :only => [:new, :create, :destroy]
+  resources :notifications, :only => [:new, :create, :destroy]
+  resources :events, :only => [:new, :create, :destroy]
+
   root :to => 'static_pages#home'
   match '/channel.html', :to => 'static_pages#channel'
   match '/fblogin', :to => 'static_pages#fblogin'

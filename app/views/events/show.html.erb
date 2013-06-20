@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @event.description %>
+</p>
+
+<p>
+  <b>Event type:</b>
+  <%= @event.event_type %>
+</p>
+
+<p>
+  <b>Tcontent:</b>
+  <%= @event.tContent_id %>
+</p>
+
+<p>
+  <b>Tcontent type:</b>
+  <%= @event.tContent_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

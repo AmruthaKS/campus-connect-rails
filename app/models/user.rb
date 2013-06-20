@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
   has_many :departments, :through => :user_colleges, :source => :department, :uniq => true
   has_many :groups, :through => :user_colleges, :source => :group, :uniq => true
 
+  has_many :events, :dependent => :destroy
+  has_many :inbox_notifications, :foreign_key => "user_id", :class_name => "Inbox", :dependent => :destroy
+
+
   before_save { |user| user.email = email.downcase }
   validates(:name, :length  => {:maximum => 50})
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
