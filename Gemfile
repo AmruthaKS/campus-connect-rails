@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rspec-rails', '2.11.0'
 end
 
+gem 'certified'
 gem 'annotate', '2.5.0'
 
 group :test do
