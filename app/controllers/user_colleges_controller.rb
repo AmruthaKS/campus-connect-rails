@@ -20,7 +20,7 @@ class UserCollegesController < ApplicationController
     event.save
 
     #create a notification for the admins
-    #FIXME: Description --> needs to be changed ()
+
     notification = Notification.new
     notification.event_id = event.id
     notification.description = current_user.name + ' ' + EVENT_TYPES[JOINED_EVENT_TYPE] + ' ' + college.name + ' Approval pending'
