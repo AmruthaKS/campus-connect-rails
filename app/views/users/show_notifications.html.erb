@@ -1,10 +1,9 @@
 <% if current_user?(@user) %>
     <section >
-      <% @user.inbox_notifications.each do |notification| %>
-        <li>
-            <p ><%= notification.notification.description  %></p>
-        </li>
-      <% end %>
+      <ol>
+        <% @notifications = @user.inbox_notifications %>
+        <%= render :partial => 'shared/comment_item', :collection=> @notifications %>
+      </ol>
     </section>
     <% else %>
         <h1>You think, I am stupid ?? !! </h1>
