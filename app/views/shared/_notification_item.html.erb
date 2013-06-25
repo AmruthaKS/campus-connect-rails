@@ -1,8 +1,9 @@
 <li id="<%= 'notification_' + notification_item.id.to_s %>">
   <span class="content">
     <% event = notification_item.notification.event %>
+    <block>
     <%= link_to(event.user.name, event.user) + ' ' + EVENT_TYPES[event.event_type] + ' ' + link_to(get_tcontent_string_for_event(event), get_tcontent_object_for_event(event)) %>
-
+    </block>
   </span>
   <span class="timestamp">
 

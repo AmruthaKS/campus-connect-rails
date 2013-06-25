@@ -1,0 +1,12 @@
+<li id="<%= 'notification_' + notification_item_dropdown.id.to_s %>">
+  <span class="content">
+    <% event = notification_item_dropdown.notification.event %>
+    <block>
+      <b><%= event.user.name %></b> <%= EVENT_TYPES[event.event_type] %> <b><%= get_tcontent_string_for_event(event) %> </b>
+    </block>
+  </span>
+  <span class="timestamp">
+  </span>
+
+</li>
+<li class="divider"></li>
