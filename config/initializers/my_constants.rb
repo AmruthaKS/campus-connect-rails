@@ -22,11 +22,14 @@ FOLLOW_NOTIFICATION_TYPE = 5
 
 
 #ACCESS_RIGHTS
-ACCESS_RIGHTS = {1 => 'read', 2 => 'write', 3 => 'admin'}
+ACCESS_RIGHTS = {-1 => 'unknown', 0 => 'pending', 1 => 'read', 2 => 'write', 3 => 'admin'}
+
 READ = 'read'
 WRITE = 'write'
 ADMIN = 'admin'
 
+UNKNOWN_ACCESS_RIGHT=-1
+PENDING_ACCESS_RIGHT=0
 READ_ACCESS_RIGHT = 1
 WRITE_ACCESS_RIGHT = 2
 ADMIN_ACCESS_RIGHT = 3
