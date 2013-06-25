@@ -1,10 +1,11 @@
 <li id="<%= 'notification_' + notification_item.id.to_s %>">
   <span class="content">
-    <%= @event = notification_item.event %>
-    <% link_to get_string_to_be_printed(notification_item) %>
+    <% event = notification_item.notification.event %>
+    <%= link_to(event.user.name, event.user) + ' ' + EVENT_TYPES[event.event_type] + ' ' + link_to(get_tcontent_string_for_event(event), get_tcontent_object_for_event(event)) %>
+
   </span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+
   </span>
 
 </li>

@@ -2,7 +2,7 @@
     <section >
       <ol>
         <% @notifications = @user.inbox_notifications %>
-        <%= render :partial => 'shared/comment_item', :collection=> @notifications %>
+        <%= render :partial => 'shared/notification_item', :collection=> @notifications %>
       </ol>
     </section>
     <% else %>
