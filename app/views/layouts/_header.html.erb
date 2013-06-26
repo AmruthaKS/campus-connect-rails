@@ -41,7 +41,11 @@
                             <li>
                               <%= link_to "Events", events_user_path(current_user) %>
                             </li>
-
+                            <% if is_admin_in_any_college? current_user.id %>
+                             <li>
+                               <%= link_to "Pending Approvals", approve_user_path(current_user) %>
+                             </li>
+                            <% end %>
 
 							<li class="divider"></li>
 							<li>

@@ -1,0 +1,23 @@
+<li id="<%= 'user_college_' + pending_approval_item.id.to_s %>">
+  <span class="content">
+
+    <block>
+      <% user = pending_approval_item.user %>
+      <%= gravatar_for user, 30%>
+      <%= link_to(user.name, user) %>
+      <%= link_to pending_approval_item.college.name, pending_approval_item.college %>
+      <%= link_to pending_approval_item.department.name, pending_approval_item.department %>
+      <%= link_to pending_approval_item.group.name, pending_approval_item.group %>
+
+    </block>
+  </span>
+  <span class="timestamp">
+  <p>FIXME: timestamp</p>
+  </span>
+  <span>
+    <%= form_for(pending_approval_item, :url => approveme_user_college_path(pending_approval_item),
+                 :html => { :method => :post }, :remote => true) do |f| %>
+    <%= f.submit "Approve", :class => "btn btn-large" %>
+<% end %>
+  </span>
+</li>
