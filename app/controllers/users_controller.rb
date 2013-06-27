@@ -76,6 +76,12 @@ class UsersController < ApplicationController
      render 'show_events'
    end
 
+   def approve
+     @title = 'Approve'
+     @user =  User.find(params[:id])
+     render 'show_approves'
+   end
+
  private
    def signed_in_user
       unless signed_in?

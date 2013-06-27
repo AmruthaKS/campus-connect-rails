@@ -4,7 +4,22 @@
 			<%= link_to "Campus-Connect", root_path, :id => "logo" %>
 			<nav>
 				<ul class="nav pull-right">
+
 					<% if signed_in? %>
+                    <li id="notifications-menu" class="dropdown">
+
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag('notifications.png', :alt => 'Notifications', :class => "gravatar", :size => '25x25') %> <span><%=  unchecked_notifications_for(current_user.id).count.to_s %> </span></a>
+                      <ul class="dropdown-menu" STYLE="width: 400px; text-align: center">
+                        <% @notifications = current_user.inbox_notifications %>
+                        <section>
+                            <%= render :partial => 'shared/notification_item_dropdown', :collection=> @notifications %>
+                        </section>
+                        <section>
+                          <%= link_to "See all notifications", notifications_user_path(current_user) %>
+                        </section>
+                      </ul>
+                    </li>
+
 					<li>
 						<a href="<%= user_path(current_user) %>"> <%= gravatar_for(current_user, 20) %> <span><%= current_user.name %></span> </a>
 					</li>
@@ -24,13 +39,13 @@
 							</li>
                             <li class="divider"></li>
                             <li>
-                              <%= link_to 'Notifications ' + unchecked_notifications_for(current_user.id).count.to_s, notifications_user_path(current_user) %>
-                            </li>
-
-                            <li>
                               <%= link_to "Events", events_user_path(current_user) %>
                             </li>
-
+                            <% if is_admin_in_any_college? current_user.id %>
+                             <li>
+                               <%= link_to "Pending Approvals", approve_user_path(current_user) %>
+                             </li>
+                            <% end %>
 
 							<li class="divider"></li>
 							<li>
