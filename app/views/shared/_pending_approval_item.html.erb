@@ -16,7 +16,7 @@
   </span>
   <span>
     <%= form_for(pending_approval_item, :url => approveme_user_college_path(pending_approval_item),
-                 :html => { :method => :post }, :remote => true) do |f| %>
+                 :html => { :method => :put }, :remote => true) do |f| %>
     <%= f.submit "Approve", :class => "btn btn-large" %>
 <% end %>
   </span>

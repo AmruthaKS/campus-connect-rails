@@ -4,4 +4,5 @@ module UsersHelper
    # gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
     image_tag("/assets/users/"+user.id.to_s + ".jpg", :alt => user.name, :class => "gravatar", :size => size.to_s + "x" +size.to_s)
   end
+
 end
