@@ -25,8 +25,8 @@ class UserCollegesController < ApplicationController
     notification.event_id = event.id
     notification.description = current_user.name + ' ' + EVENT_TYPES[JOINED_EVENT_TYPE] + ' ' + college.name + ' Approval pending'
     notification.notification_type = APPROVE_NOTIFICATION_TYPE
-    notification.tContent_id = current_user.id
-    notification.tContent_type= USER_TCONTENT_TYPE
+   # notification.tContent_id = current_user.id
+    notification.tContent_type= APPROVE_RCONTENT_TYPE
     notification.save
 
     admins = get_group_admins(user_college_params[:group_id])
