@@ -7,18 +7,24 @@
 
 					<% if signed_in? %>
                     <li id="notifications-menu" class="dropdown">
-
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag('notifications.png', :alt => 'Notifications', :class => "gravatar", :size => '25x25') %> <span><%=  unchecked_notifications_for(current_user.id).count.to_s %> </span></a>
-                      <ul class="dropdown-menu" STYLE="width: 400px; text-align: center">
-                        <% @notifications = current_user.inbox_notifications %>
-                        <section>
-                            <%= render :partial => 'shared/notification_item_dropdown', :collection=> @notifications %>
-                        </section>
-                        <section>
-                          <%= link_to "See all notifications", notifications_user_path(current_user) %>
-                        </section>
-                      </ul>
+                      <%= link_to 'Clear', notifications_check_user_path(current_user), :remote => true, :method => :post %>
                     </li>
+
+                      <li id="notifications-menu" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <%= image_tag('notifications.png', :alt => 'Notifications', :class => "gravatar", :size => '25x25') %>
+                          <span><%=  unchecked_notifications_for(current_user.id).count.to_s %> </span>
+                        </a>
+                        <ul class="dropdown-menu" STYLE="width: 400px; text-align: center">
+                          <% @notifications = current_user.inbox_notifications %>
+                          <section>
+                            <%= render :partial => 'shared/notification_item_dropdown', :collection=> @notifications %>
+                          </section>
+                          <section>
+                            <%= link_to "See all notifications", notifications_user_path(current_user) %>
+                          </section>
+                        </ul>
+                      </li>
 
 					<li>
 						<a href="<%= user_path(current_user) %>"> <%= gravatar_for(current_user, 20) %> <span><%= current_user.name %></span> </a>

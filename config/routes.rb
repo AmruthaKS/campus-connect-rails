@@ -2,6 +2,7 @@ StaticTest::Application.routes.draw do
 
   resources :users do
     member do
+      post :notifications_check
       get :following, :followers, :info, :notifications, :events, :approve
     end
   end
@@ -21,7 +22,7 @@ StaticTest::Application.routes.draw do
   resources :groups
   resources :user_colleges do
     member do
-      post :approveme
+      put :approveme
     end
   end
 
