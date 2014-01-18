@@ -1,0 +1,22 @@
+<%= will_paginate %>
+<ul>
+  <% @users.each do |usr| %>
+      <li>
+        <block>
+          <div class="image_display" style="width:70%;display: inline; float: left;">
+            <%= gravatar_for usr, 50 %>
+            <%= link_to usr.name, usr %>
+          </div>
+          <div id="<%= 'unfollow' + usr.id.to_s %>" class="unfollow_button_display" style="width:30%;display: inline; float:left;">
+            <% @user = usr %>
+            <% if current_user.following?usr %>
+                <%=  render 'user_unfollow' %>
+            <% else %>
+                <%=  render 'user_follow' %>
+            <% end %>
+          </div>
+        </block>
+      </li>
+  <% end %>
+  <%= will_paginate %>
+</ul>

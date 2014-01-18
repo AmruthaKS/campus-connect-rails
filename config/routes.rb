@@ -8,8 +8,14 @@ StaticTest::Application.routes.draw do
   end
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
-  resources :relationships, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
+  
+
+  resources :relationships do
+    member do
+      post :user_unfollow , :user_follow
+    end
+  end
   
   resources :colleges do
     get :autocomplete_college_name,  :on => :collection
