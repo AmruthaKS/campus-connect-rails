@@ -4,7 +4,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :micropost
 
-  validates :user_id, :presence => true, :length => {:maximum => 255}
+  validates :content, :presence => true, :length => {:maximum => 255}
+
   default_scope :order => 'comments.created_at ASC'
 
 end

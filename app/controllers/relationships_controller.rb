@@ -19,6 +19,25 @@ class RelationshipsController < ApplicationController
     end
   end
 
+  def user_unfollow
+    @user = User.find(params[:id])
+    current_user.relationships.find_by_followed_id(@user).delete
+    respond_to do |format|
+      format.html { }
+      format.js
+    end
+  end
+
+  def user_follow
+    @user = User.find(params[:id])
+    current_user.follow!(@user)
+    respond_to do |format|
+      format.html { }
+      format.js
+    end
+  end
+  
+
   private
 
   def signed_in_user
