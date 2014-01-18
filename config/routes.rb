@@ -2,7 +2,8 @@ StaticTest::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :info, :notifications, :events
+      post :notifications_check
+      get :following, :followers, :info, :notifications, :events, :approve
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
@@ -19,7 +20,12 @@ StaticTest::Application.routes.draw do
      get :auto_fetch_groups, :on => :collection
   end
   resources :groups
-  resources :user_colleges, :only => [:create]
+  resources :user_colleges do
+    member do
+      put :approveme
+    end
+  end
+
 
   resources :inboxes, :only => [:new, :create, :destroy]
   resources :notifications, :only => [:new, :create, :destroy]

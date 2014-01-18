@@ -91,4 +91,16 @@ module UserCollegesHelper
     end
   end
 
+  def is_admin_in_any_college?(user_id)
+    group_priv = UserCollege.where('user_id = ? and group_priv > ?', user_id, ADMIN_ACCESS_RIGHT).select('group_id').first
+    if(!group_priv.nil?)
+      return true
+    end
+  end
+
+  def get_pending_approvals(user_id)
+    group_ids = 'Select group_id from user_colleges where group_priv > :admin_priv and user_id = :user_id'
+    UserCollege.where("group_priv = :pending_approval_priv and group_id in (#{group_ids})", :admin_priv => ADMIN_ACCESS_RIGHT, :user_id => user_id, :pending_approval_priv => PENDING_ACCESS_RIGHT)
+  end
+
 end

@@ -112,6 +112,7 @@ GEM
     multi_xml (0.5.1)
     multipart-post (1.1.5)
     mysql2 (0.3.11)
+    newrelic_rpm (3.6.5.130)
     nokogiri (1.5.5)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -213,6 +214,7 @@ DEPENDENCIES
   jquery-rails
   json
   mysql2
+  newrelic_rpm
   rails (= 3.2.8)
   rails3-jquery-autocomplete (= 1.0.10)
   rest-client

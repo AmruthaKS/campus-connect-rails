@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'inboxes_helper'
    before_filter :signed_in_user, :only => [:index, :edit, :update, :destroy, :following, :followers]
    before_filter :correct_user,   :only => [:edit, :update]
    
@@ -74,6 +75,21 @@ class UsersController < ApplicationController
      @title = "Events"
      @user =  User.find(params[:id])
      render 'show_events'
+   end
+
+   def approve
+     @title = 'Approve'
+     @user =  User.find(params[:id])
+     render 'show_approves'
+   end
+
+   def notifications_check
+     @title = 'notifications'
+     @user =  User.find(params[:id])
+     respond_to do |format|
+       format.html { }
+       format.js
+     end
    end
 
  private
