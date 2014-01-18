@@ -32,6 +32,8 @@ end
   def show
     @college = College.find(params[:id])
     @micropost = current_user.microposts.build if signed_in?
+    @micropost.college_id = 1
+    @micropost.user_id = 1
     @feed_items = @college.microposts.paginate(:page => params[:page])
     store_location
   end

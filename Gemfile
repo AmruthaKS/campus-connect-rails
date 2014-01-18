@@ -20,6 +20,7 @@ group :development, :test do
 end
 
 gem 'certified'
+gem 'newrelic_rpm'
 gem 'annotate', '2.5.0'
 
 group :test do
