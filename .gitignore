@@ -30,3 +30,5 @@ mysql-connector-license.txt
 mysql-connector-java-5.1.18-bin.jar
 
 nbproject/private/private.xml
+
+database.yml
