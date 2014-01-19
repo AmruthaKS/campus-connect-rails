@@ -2,7 +2,7 @@
 <ul class="users">
   <% @users.each do |user| %>
     <li>
-      <%= gravatar_for user, 50 %>
+      <%= image_tag user.avatar.url(:thumb), :size => "50x50" %>
       <%= link_to user.name, user %>
     </li>
   <% end %>

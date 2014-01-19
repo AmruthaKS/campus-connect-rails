@@ -15,6 +15,8 @@ gem  'em-http-request'
 gem  'rest-client'
 gem  'fbgraph'
 
+gem 'paperclip', '~> 3.0'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
 end
