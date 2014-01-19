@@ -1,5 +1,5 @@
 <li id="<%= "microspost_" + feed_item.id.to_s %>">
-  <%= gravatar_for feed_item.user, 50 %>
+  <%= image_tag feed_item.user.avatar.url(:thumb) %>
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>

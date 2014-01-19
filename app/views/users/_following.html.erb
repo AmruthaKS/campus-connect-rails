@@ -4,7 +4,7 @@
       <li>
         <block>
           <div class="image_display" style="width:70%;display: inline; float: left;">
-            <%= gravatar_for usr, 50 %>
+            <%= image_tag usr.avatar.url(:thumb) %>
             <%= link_to usr.name, usr %>
           </div>
           <div id="<%= 'unfollow' + usr.id.to_s %>" class="unfollow_button_display" style="width:30%;display: inline; float:left;">

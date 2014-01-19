@@ -3,7 +3,7 @@
 
     <block>
       <% user = pending_approval_item.user %>
-      <%= gravatar_for user, 30%>
+      <%= image_tag user.avatar.url(:vsamll) %>
       <%= link_to(user.name, user) %>
       <%= link_to pending_approval_item.college.name, pending_approval_item.college %>
       <%= link_to pending_approval_item.department.name, pending_approval_item.department %>
