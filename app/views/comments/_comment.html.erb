@@ -1,7 +1,7 @@
 <li id="<%= "comment_" + @comment.id.to_s %>">
   <div class="comment_section">
     <div class="comment_image">
-    <%= gravatar_for @comment.user, 30 %>
+      <%= image_tag @comment.user.avatar.url(:small), size: "32x32" %>
     </div>
     <div>
   <span class="user">
