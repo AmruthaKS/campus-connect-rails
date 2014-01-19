@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
         format.html {
@@ -33,7 +34,12 @@ class CommentsController < ApplicationController
   private
 
   def correct_user
-    @comment = current_user.comments.find_by_id(params[:id])
-    redirect_to root_url if @comment.nil?
+    @comment_by_loggedin_user = !current_user.comments.find_by_id(params[:id]).nil?
+    @commment_on_loggedin_user = current_user?(Comment.find(params[:id]).micropost.user)
+    if @comment_by_loggedin_user || @commment_on_loggedin_user
+    else
+      redirect_to root_url
+    end
   end
+
 end
