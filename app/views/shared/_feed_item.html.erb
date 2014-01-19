@@ -1,5 +1,5 @@
 <li id="<%= "microspost_" + feed_item.id.to_s %>">
-  <%= image_tag feed_item.user.avatar.url(:thumb) %>
+  <%= image_tag feed_item.user.avatar.url(:thumb), :size => "50x50" %>
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>

@@ -1,7 +1,7 @@
 <li id="<%= "comment_" + comment_item.id.to_s %>">
   <div class="comment_section">
     <div class="comment_image">
-      <%= image_tag comment_item.user.avatar.url(:medium) %>
+      <%= image_tag comment_item.user.avatar.url(:thumb), :size => "30x30" %>
     </div>
     <div>
   <span class="user">

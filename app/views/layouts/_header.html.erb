@@ -27,7 +27,7 @@
                       </li>
 
 					<li>
-						<a href="<%= user_path(current_user) %>"><%= image_tag @current_user.avatar.url(:vsmall) %> <span><%= current_user.name %></span> </a>
+						<a href="<%= user_path(current_user) %>"><%= image_tag @current_user.avatar.url(:small), :size => "32x32" %> <span><%= current_user.name %></span> </a>
 					</li>
 					<% end %>
 					<li>

@@ -1,5 +1,5 @@
 <li id="<%= "microspost_" + micropost.id.to_s %>" >
-	<%= image_tag micropost.user.avatar.url(:thumb) %>
+	<%= image_tag micropost.user.avatar.url(:thumb), :size => "50x50" %>
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
