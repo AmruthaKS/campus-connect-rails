@@ -25,8 +25,7 @@ $(function() {
 
 $(document).ready(function() {
 
-    $('#post_user_name').autocomplete({source: "/ajax/users"})
-        .data("autocomplete")._renderItem = function( ul, item ) {
+    $('#post_user_name').autocomplete({source: "/ajax/users"}).data("autocomplete")._renderItem = function( ul, item ) {
         var inner_html = '<a href = ' + item.link +'><div class="list_item_container"><div class="image"><img src="' + item.image + '" height="20", width="20"></div><div class="label">' + item.label + '</div></div></a>';
         return $( "<li></li>" )
             .data( "item.autocomplete", item )
