@@ -6,7 +6,7 @@ class AjaxController < ApplicationController
     else
       @user_items = User.all
     end
-    list = @user_items.map {|u| Hash[ id: u.id, link: url_for(u),label: u.name, image: u.avatar.url(:thumb)]}
+    list = @user_items.map {|u| Hash[ id: u.id, link: user_path(u),label: u.name, image: u.avatar.url(:thumb)]}
     render json: list
   end
 end
