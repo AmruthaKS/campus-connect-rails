@@ -26,7 +26,7 @@
      	</section>
     <% end %>  	
     <% if @user.microposts.any? %>
-      <ol class="microposts">
+      <ol class="microposts" id="microposts">
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>
