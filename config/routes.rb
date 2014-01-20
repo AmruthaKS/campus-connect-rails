@@ -3,13 +3,16 @@ StaticTest::Application.routes.draw do
   resources :users do
     member do
       post :notifications_check
-      get :following, :followers, :info, :notifications, :events, :approve
+      get :following, :followers, :info, :notifications, :events, :approve, :autocomplete_user_name
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
-  
+
+  resources :ajax do
+      get :users, :on => :collection
+  end
 
   resources :relationships do
     member do
