@@ -13,15 +13,8 @@ class FbController < ApplicationController
 
     @user.name = user_info.name
     @user.email = user_info.email
-    @user.password = "password123"
-    if @user.save
-      sign_in @user
-      flash.now[:success] = "Welcome to the Comapus Connect!!"
-      redirect_to @user
-    else
+    #@user.password = "password123"
       render 'users/new'
-    end
-
   end
 
   private
