@@ -24,6 +24,13 @@
       <ul class="users">
         <%= render 'following' %>
       </ul>
+    <% else %>
+        <% if @title == "Following" %>
+        <br><br><br><h2> You are not following any...<br><br> Search for your friends and follow to get updates </h2>
+        <% else %>
+        <br><br><br><h2> You dont have any followers right now... </h2>
+        <% end %>
     <% end %>
+
   </div>
 </div>
