@@ -1,5 +1,7 @@
 StaticTest::Application.routes.draw do
 
+  resources :password_resets
+
   resources :users do
     member do
       post :notifications_check
