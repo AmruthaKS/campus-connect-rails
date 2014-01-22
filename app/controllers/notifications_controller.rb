@@ -2,11 +2,11 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
-    @notifications = Notification.all
+    @inbox_items = Notification.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @notifications }
+      format.json { render json: @inbox_items }
     end
   end
 

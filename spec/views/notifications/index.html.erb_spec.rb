@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "notifications/index" do
   before(:each) do
-    assign(:notifications, [
+    assign(:inbox_items, [
       stub_model(Notification,
         :description => "Description",
         :notification_type => 1,

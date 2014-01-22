@@ -1,7 +1,8 @@
-<a href="<%= get_referred_url_for_notification notification_item_dropdown.notification %>">
-<li id="<%= 'notification_' + notification_item_dropdown.id.to_s %>">
+<% notification = inbox_item.notification %>
+<a href="<%= get_referred_url_for_notification(notification) %>">
+<li id="<%= 'notification_' + notification.id.to_s %>">
   <span class="content">
-    <% event = notification_item_dropdown.notification.event %>
+    <% event = notification.event %>
     <block>
       <b><%= event.user.name %></b> <%= EVENT_TYPES[event.event_type] %> <b><%= get_tcontent_string_for_event(event) %> </b>
     </block>

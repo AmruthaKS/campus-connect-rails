@@ -3,9 +3,10 @@ StaticTest::Application.routes.draw do
   resources :password_resets
 
   resources :users do
+    resources :microposts
     member do
       post :notifications_check
-      get :following, :followers, :info, :notifications, :events, :approve, :autocomplete_user_name
+      get :following, :followers, :info, :inbox_items, :events, :approve, :autocomplete_user_name
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]

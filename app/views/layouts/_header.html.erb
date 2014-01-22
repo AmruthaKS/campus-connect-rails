@@ -17,9 +17,9 @@
                           <span><%=  unchecked_notifications_for(current_user.id).count.to_s %> </span>
                         </a>
                         <ul class="dropdown-menu" STYLE="width: 400px; text-align: center">
-                          <% @notifications = current_user.inbox_notifications %>
+                          <% inbox_items = current_user.inbox_notifications %>
                           <section>
-                            <%= render :partial => 'shared/notification_item_dropdown', :collection=> @notifications %>
+                            <%= render :partial => 'shared/inbox_item', :collection=> inbox_items %>
                           </section>
                           <section>
                             <%= link_to "See all notifications", notifications_user_path(current_user) %>

@@ -1,6 +1,7 @@
 class MicropostsController < ApplicationController
   before_filter :signed_in_user, :only => [:create, :destroy]
   before_filter :correct_user,   :only => :destroy
+  before_filter :is_coming_through_user, :only => :show
   def index
   end
 
@@ -19,6 +20,11 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def show
+    @micropost = Micropost.find(params[:id])
+  end
+
+
   def destroy
     @micropost.destroy
     respond_to do |format|
@@ -30,6 +36,10 @@ class MicropostsController < ApplicationController
   end
 
   private
+
+  def is_coming_through_user
+    redirect_to root_url if params[:user_id].nil? && params[:college_id].nil?
+  end
 
   def signed_in_user
     unless signed_in?
