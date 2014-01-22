@@ -24,14 +24,31 @@ StaticTest::Application.routes.draw do
   end
   
   resources :colleges do
+    resources :microposts
+    resources :departments do
+      resources :microposts
+      resources :groups do
+        resources :microposts
+      end
+    end
+    resources :groups do
+      resources :microposts
+    end
     get :autocomplete_college_name,  :on => :collection
     get :auto_fetch_departments, :on => :collection
   end
   
   resources :departments do
+    resources :groups do
+      resources :microposts
+    end
+    resources :microposts
      get :auto_fetch_groups, :on => :collection
   end
-  resources :groups
+  resources :groups do
+    resources :microposts
+  end
+
   resources :user_colleges do
     member do
       put :approveme

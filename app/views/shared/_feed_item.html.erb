@@ -1,7 +1,28 @@
 <li id="<%= "microspost_" + feed_item.id.to_s %>">
-  <%= image_tag feed_item.user.avatar.url(:thumb), :size => "50x50" %>
+  <% posted_user = feed_item.user %>
+  <%= image_tag posted_user.avatar.url(:thumb), :size => "40x40" %>
   <span class="user">
-    <%= link_to feed_item.user.name, feed_item.user %>
+    <%= link_to posted_user.name, posted_user %>
+
+    <% unless feed_item.target_type.eql?(USER_MICRO_POST) && feed_item.target_id.eql?(posted_user.id) %>
+        &gt;
+    <% target_object = get_referred_object_for_post feed_item  %>
+        <% if feed_item.target_type.eql?(USER_MICRO_POST) || feed_item.target_type.eql?(COLLEGE_MICRO_POST)%>
+            <%= link_to target_object.name, target_object %>
+
+        <%  elsif feed_item.target_type.eql?(DEPARTMENT_MICRO_POST) %>
+            <% college = target_object.college %>
+            <%= link_to college.name, college_path(college) %> &gt;
+            <%= link_to target_object.name, college_department_path(college, target_object) %>
+
+        <%  elsif feed_item.target_type.eql?(GROUP_MICRO_POST) %>
+            <% college = target_object.college %>
+            <% department = target_object.department %>
+            <%= link_to college.name, college_path(college) %> &gt;
+            <%= link_to department.name, college_department_path(college, department) %> &gt;
+            <%= link_to target_object.name, college_department_group_path(college, department, target_object) %>
+        <% end %>
+    <% end %>
   </span>
   <span class="content"><%= feed_item.content %></span>
   <span class="timestamp">
