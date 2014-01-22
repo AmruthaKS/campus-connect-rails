@@ -36,7 +36,7 @@ ADMIN_ACCESS_RIGHT = 3
 
 
 #EVENT CONSTANTS
-EVENT_TYPES = { 1 => 'comment', 2 => 'like', 3 => 'post', 4 => 'joined', 5 => 'following'}
+EVENT_TYPES = { 1 => 'commented on', 2 => 'likes', 3 => 'posted on', 4 => 'joined', 5 => 'following'}
 COMMENT_EVENT_TYPE = 1
 LIKE_EVENT_TYPE = 2
 POST_EVENT_TYPE = 3

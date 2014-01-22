@@ -38,7 +38,7 @@ describe NotificationsController do
     it "assigns all notifications as @notifications" do
       notification = Notification.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:notifications).should eq([notification])
+      assigns(:inbox_items).should eq([notification])
     end
   end
 

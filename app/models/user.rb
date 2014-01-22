@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :user_colleges, :source => :group, :uniq => true
 
   has_many :events, :dependent => :destroy
-  has_many :inbox_notifications, :foreign_key => "user_id", :class_name => "Inbox", :dependent => :destroy
+  has_many :inbox_notifications, :foreign_key => "user_id", :class_name => "Inbox", :dependent => :destroy, :order => "created_at DESC"
 
 
   before_save { |user| user.email = email.downcase }
