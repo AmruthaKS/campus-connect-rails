@@ -9,6 +9,7 @@
 		</section>
 	</aside>
 	<div class="span8">
+      <% if has_read_access_for_dept?(@department, current_user.id) %>
 		<%= render 'departments/department_name_header'%>
 		<% if is_admin_for_dept?(@department.id, current_user.id) %>
 			<%= render 'departments/create_group'%>
@@ -20,6 +21,7 @@
 		</section>
 		<% end %>
 		<%= render 'shared/feed' %>
+      <% end %>
 	</div>
 </div>
 <% else %>

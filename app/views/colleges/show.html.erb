@@ -11,16 +11,18 @@
 	<div class="span8">
 		<%= render 'colleges/college_name_header'%>
 		<%= render 'colleges/college_details'%>
+
 		<% if is_admin_for_college?(@college.id, current_user.id) %>
 			<%= render 'colleges/create_dept'%>
 		<% end %>
-			
+		<% if has_read_access_for_college?(@college.id, current_user.id) %>
 		<% if has_write_access_for_college?(@college.id, current_user.id) %>
             <section class="post_field">
                 <%= render 'colleges/post_form' %>
             </section>
         <% end %>
 		<%= render 'shared/feed' %>
+          <% end %>
 	</div>
 </div>
 <% else %>

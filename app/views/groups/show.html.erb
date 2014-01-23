@@ -10,13 +10,14 @@
 	</aside>
 	<div class="span8">
 		<%= render 'groups/group_name_header'%>
-			
+		<% if has_read_access_for_group?(@group.id, current_user.id) %>
 		<% if has_write_access_for_group?(@group.id, current_user.id) %>
 		<section class="post_field">
 			<%= render 'groups/post_form' %>
 		</section>
 		<% end %>
 		<%= render 'shared/feed' %>
+          <% end %>
 	</div>
 </div>
 <% else %>
