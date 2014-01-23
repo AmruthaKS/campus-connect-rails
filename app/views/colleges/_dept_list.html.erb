@@ -2,7 +2,7 @@
 <ol class="groups_collegs">
 	<% for department in @college.departments %>
 	<li>
-		<%= link_to department.name, department %>
+		<%= link_to department.name, college_department_path(@college, department) %>
 	</li>
 	<% end %>
 </ol>

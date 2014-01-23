@@ -7,6 +7,38 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(params[:micropost])
+    @micropost.user_id = current_user.id
+    if !params[:user_id].nil?
+      @micropost.target_id = params[:user_id]
+      @micropost.target_type = USER_MICRO_POST
+
+    elsif !params[:group_id].nil?
+      @micropost.target_id = params[:group_id]
+      @micropost.target_type = GROUP_MICRO_POST
+      @micropost.college_id = params[:college_id]
+      @micropost.department_id = params[:department_id]
+      @micropost.group_id = params[:group_id]
+
+    elsif !params[:department_id].nil?
+      @micropost.target_id = params[:department_id]
+      @micropost.target_type = DEPARTMENT_MICRO_POST
+      @micropost.college_id = params[:college_id]
+      @micropost.department_id = params[:department_id]
+
+      elsif !params[:college_id].nil?
+        @micropost.target_id = params[:college_id]
+        @micropost.target_type = COLLEGE_MICRO_POST
+        @micropost.college_id = params[:college_id]
+
+      else
+        @micropost.target_id = current_user.id
+        @micropost.target_type = USER_MICRO_POST
+    end
+
+
+
+    #todo create a notification
+    #todo if not the current user
     if @micropost.save
       respond_to do |format|
         format.html {

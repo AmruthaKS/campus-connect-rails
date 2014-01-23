@@ -13,4 +13,8 @@ class Micropost < ActiveRecord::Base
    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", :user_id => user)
   end
 
+  def self.user_related(user)
+    where("user_id = :user_id OR (target_id=:user_id and target_type = #{USER_MICRO_POST})", :user_id => user)
+  end
+
 end

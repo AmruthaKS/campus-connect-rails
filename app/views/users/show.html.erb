@@ -20,17 +20,19 @@
   <div id="main_content" class="span8 feed_content">  
     <%= render 'follow_form' if signed_in? %>
    	<%= render 'user_details_top' %>
-   	<% if current_user?(@user) %>
+
    		<section class="post_form" id ="post_form">
-        	<%= render 'microposts/micropost_form' %>
+        	<%= render 'micropost_form' %>
      	</section>
-    <% end %>  	
-    <% if @user.microposts.any? %>
-      <ol class="microposts" id="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
+    <ol class="microposts" id="microposts">
+    <% microposts = @user.related_microposts.paginate(:page => params[:page]) %>
+    <% if microposts.any? %>
+
+        <%= render microposts %>
+
+      <%= will_paginate microposts %>
     <% end %>
+    </ol>
   </div>
   <aside class="span4 right_bar">
     	<%= render 'shared/misc' %>

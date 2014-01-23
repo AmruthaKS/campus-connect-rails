@@ -1,11 +1,6 @@
-<%= form_for(@micropost) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <div class="post_field">
-    <%= f.text_area :content, :placeholder => "Compose new micropost..." %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.hidden_field :college_id, :value => @group.college.id %>
-	<%= f.hidden_field :department_id, :value => @group.department.id%>
-	<%= f.hidden_field :group_id, :value => @group.id %>
-  </div>
-  <%= f.submit "Post", :class => "btn btn-large btn-primary" %>
+<%= form_for([@group.college, @group.department, @group, @micropost]) do |f| %>
+    <div class="post_field">
+      <%= f.text_area :content, :placeholder => "Compose new micropost..." %>
+    </div>
+    <%= f.submit "Post", :class => "btn btn-large btn-primary" %>
 <% end %>

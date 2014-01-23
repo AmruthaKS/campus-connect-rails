@@ -5,7 +5,7 @@ def get_referred_url_for_notification(notification)
 
   elsif notification.tContent_type.eql? COLLEGE_RCONTENT_TYPE
     college = College.find(notification.tContent_id)
-    return url_for college
+    return college_path college
 
     elsif notification.tContent_type.eql? APPROVE_RCONTENT_TYPE
       return approve_user_path(current_user)

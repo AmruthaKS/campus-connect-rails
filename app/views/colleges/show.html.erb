@@ -16,10 +16,10 @@
 		<% end %>
 			
 		<% if has_write_access_for_college?(@college.id, current_user.id) %>
-		<section class="post_field">
-			<%= render 'colleges/post_form' %>
-		</section>
-		<% end %>
+            <section class="post_field">
+                <%= render 'colleges/post_form' %>
+            </section>
+        <% end %>
 		<%= render 'shared/feed' %>
 	</div>
 </div>
