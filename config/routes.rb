@@ -3,11 +3,12 @@ StaticTest::Application.routes.draw do
   resources :password_resets
 
   resources :users do
-    resources :microposts
     member do
       post :notifications_check
-      get :following, :followers, :info, :inbox_items, :events, :approve, :autocomplete_user_name
+      get :following, :followers, :info, :notifications, :events, :approve, :autocomplete_user_name
     end
+    resources :microposts
+
   end
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
@@ -22,12 +23,18 @@ StaticTest::Application.routes.draw do
       post :user_unfollow , :user_follow
     end
   end
-  
+
   resources :colleges do
+    #college/1/microposts
     resources :microposts
+
+    #college/1/departments
     resources :departments do
+      #college/1/departments/1/microposts
       resources :microposts
+      #college/1/departments/1/groups
       resources :groups do
+        #college/1/departments/1/groups/1/microposts
         resources :microposts
       end
     end
@@ -37,14 +44,16 @@ StaticTest::Application.routes.draw do
     get :autocomplete_college_name,  :on => :collection
     get :auto_fetch_departments, :on => :collection
   end
+  #College ends here
   
   resources :departments do
     resources :groups do
       resources :microposts
     end
     resources :microposts
-     get :auto_fetch_groups, :on => :collection
+    get :auto_fetch_groups, :on => :collection
   end
+
   resources :groups do
     resources :microposts
   end

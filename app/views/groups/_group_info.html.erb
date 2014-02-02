@@ -1,5 +1,5 @@
 <a href="#">
-  <%= college_image(@group.college, 50) %>
+  <%= image_tag @group.avatar.url(:small), :size => "50x50"  %>
 </a>
 <h1>
   <%= @group.department.name %>

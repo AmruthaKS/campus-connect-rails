@@ -8,7 +8,7 @@
 			<%= college.start_date %>
 		</div>
 		<div class="user_college_image">
-			<%= college_image(college, 50) %>
+          <%= image_tag college.avatar.url(:small), :size => "50x50"  %>
 		</div>
 		
 		<div class="user_college_details">

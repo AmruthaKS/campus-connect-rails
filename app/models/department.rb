@@ -1,5 +1,7 @@
 class Department < ActiveRecord::Base
-  attr_accessible :name, :college_id, :admin_id
+  attr_accessible :name, :college_id, :admin_id, :avatar
+
+  has_attached_file :avatar, :styles => { :large => "320x320>", :thumb => "100x100>", :small => "50x50>" }, :default_url => "/assets/college/:style/default.jpeg"
 
   belongs_to :college
   belongs_to :admin , :class_name => "User", :foreign_key => "admin_id"
