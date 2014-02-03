@@ -37,6 +37,9 @@
 
     <%= f.label :website %>
     <%= f.text_field :website %>
+
+        <%= image_tag @college.avatar.url(:large), :size => "320x320"  %>
+        <%= f.file_field :avatar %>
     
     <%= f.submit "Create College", :class => "btn btn-large btn-primary" %>
     <% end %>

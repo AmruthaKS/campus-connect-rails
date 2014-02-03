@@ -13,6 +13,9 @@
  <%= f.hidden_field :college_id, :value => @current_department.college.id %>
  <%= f.hidden_field :department_id, :value => @current_department.id  %>
 
+        <%= image_tag @group.avatar.url(:large), :size => "320x320"  %>
+        <%= f.file_field :avatar %>
+
      <%= f.submit "Create Group.", :class => "btn btn-large btn-primary" %>
 <% end %>
   </div>
