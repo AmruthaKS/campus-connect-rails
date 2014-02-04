@@ -79,8 +79,6 @@ StaticTest::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy', :via => :delete
-  match '/newdept', :to => 'departments#new'
-  match '/newgroup', :to => 'groups#new'
   match '/fb_login', :to => 'fb#login'
   match '/fb_redirect', :to => 'fb#redirect'
   # The priority is based upon order of creation:

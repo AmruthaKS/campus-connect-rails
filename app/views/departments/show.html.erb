@@ -12,7 +12,8 @@
       <% if has_read_access_for_dept?(@department, current_user.id) %>
 		<%= render 'departments/department_name_header'%>
 		<% if is_admin_for_dept?(@department.id, current_user.id) %>
-			<%= render 'departments/create_group'%>
+              <%= button_to "New Group", new_college_department_group_path(@department.college, @department), method: :get do %>
+              <% end %>
 		<% end %>
 			
 		<% if has_write_access_for_dept?(@department.id, current_user.id) %>
