@@ -1,2 +1,2 @@
-$('#<%= "comments_post_" + @comment.micropost.id.to_s %>').append('<%= escape_javascript(render @comment) %>');
-$('#<%= "comments_post_form_" + @comment.micropost.id.to_s %> > form')[0].reset();
+$('#<%= "comments_post_" + @micro_posst_id_for_response.to_s %>').append('<%= escape_javascript(render @comment) %>');
+$('#<%= "comments_post_form_" + @micro_posst_id_for_response.to_s %> > form')[0].reset();

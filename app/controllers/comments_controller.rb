@@ -6,39 +6,47 @@ class CommentsController < ApplicationController
   def create
     comment_params = params[:comment]
     @micropost = Micropost.find_by_id(comment_params[:micropost_id])
+
     @comment = @micropost.comments.build
     @comment.content = comment_params[:content]
-    @comment.user_id = current_user.id
+    logged_in_user = current_user.id
+    @comment.user_id = logged_in_user
+    micro_post_id = @micropost.id
+    @micro_posst_id_for_response = micro_post_id
 
     if @comment.save
       #todo move code to the helper if possible
       #create a event
       event = current_user.events.build
-      event.user_id = current_user.id
+      event.user_id = logged_in_user
       event.event_type = COMMENT_EVENT_TYPE
-      event.tContent_id = @micropost.id
+      event.tContent_id = micro_post_id
       event.tContent_type = POST_TCONTENT_TYPE
 
       event.description = current_user.name + ' ' + EVENT_TYPES[COMMENT_EVENT_TYPE] + ' ' + 'post'
       event.save
 
-      #create a notification
-      notification = Notification.new
-      notification.event_id = event.id
-      notification.description = current_user.name + ' ' + EVENT_TYPES[COMMENT_EVENT_TYPE] + ' ' + ' your post'
-      notification.notification_type = COMMENT_NOTIFICATION_TYPE
+      micro_post_user_id = @micropost.user.id
+      if micro_post_user_id != logged_in_user
+        #create a notification
+        notification = Notification.new
+        notification.event_id = event.id
+        #todo: analyze the description part does this really makes sense?
+        notification.description = current_user.name + ' ' + EVENT_TYPES[COMMENT_EVENT_TYPE] + ' ' + ' your post'
+        notification.notification_type = COMMENT_NOTIFICATION_TYPE
 
-      #Here it is important because to generate the clickable notification link
-      notification.tContent_id = @micropost.id
-      notification.tContent_type= POST_RCONTENT_TYPE
-      notification.save
+        #Here it is important because to generate the clickable notification link
+        notification.tContent_id = micro_post_id
+        notification.tContent_type= POST_RCONTENT_TYPE
+        notification.save
 
-      #add to the user inbox
-      inbox = Inbox.new
-      inbox.notification_id = notification.id
-      inbox.user_id = @micropost.user.id
-      inbox.checked = false
-      inbox.save
+        #add to the user inbox
+        inbox = Inbox.new
+        inbox.notification_id = notification.id
+        inbox.user_id = micro_post_user_id
+        inbox.checked = false
+        inbox.save
+      end
 
       respond_to do |format|
         format.html {
