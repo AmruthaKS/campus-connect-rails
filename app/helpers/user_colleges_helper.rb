@@ -83,11 +83,11 @@ module UserCollegesHelper
 
   def get_admins(id, type)
     if(type.eql?(GROUP))
-      UserCollege.where('group_id = ? and group_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id')
+      UserCollege.where('group_id = ? and group_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id').uniq
     elsif type.eql?(DEPARTMENT)
-      UserCollege.where('department_id = ? and dept_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id')
+      UserCollege.where('department_id = ? and dept_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id').uniq
     elsif type.eql?(COLLEGE)
-      UserCollege.where('college_id = ? and college_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id')
+      UserCollege.where('college_id = ? and college_priv >= ? ' , id, ADMIN_ACCESS_RIGHT).select('user_id').uniq
     end
   end
 
