@@ -9,15 +9,16 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>  
   </head>
-  <body>
+  <body class="enhanced-mini-profile">
+  <div id="doc" class="route-home">
     <%= render 'layouts/header' %>
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-    <div class="container">
-      <%= yield %>
-       <%= render 'layouts/footer' %>
-       <%= debug(params) if Rails.env.development? %>
+    <div id="page-outer">
+      <div id="page-container" class="wrapper wrapper-home white">
+        <%= yield %>
+      </div>
+    </div>
+   <!-- <%= render 'layouts/footer' %>   -->
+    <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>
