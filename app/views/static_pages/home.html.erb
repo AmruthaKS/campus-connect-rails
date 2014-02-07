@@ -18,11 +18,21 @@
             </div>
           </div>
 
-            <div class="span8 feed_content">
-             <section class="post_form" id ="post_form">
+            <div class="content-main" id="timeline" role="main">
+              <div class="post_form" id ="post_form">
                 <%= render 'microposts/micropost_form' %>
-              </section>
-              <%= render 'shared/feed' %>
+              </div>
+
+              <div class="stream-container conversations-enabled persistent-inline-actions light-inline-actions">
+                <div class="stream-item">
+
+                </div>
+                <div class="stream home-stream">
+                  <%= render 'shared/feed' %>
+                </div>
+              </div>
+
+           <!--             -->
             </div>
 
         <!--

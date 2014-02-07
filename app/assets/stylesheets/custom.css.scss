@@ -41,6 +41,12 @@ h3 {
     line-height: 22px;
 }
 
+.content-main {
+    width: 570px;
+    float: right;
+}
+
+
 
 .module ul:first-child li:first-child .list-link, .module .flex-module:first-child, .module .contrast-flex-module:first-child {
     border-top-left-radius: 5px;
@@ -78,22 +84,17 @@ html, body, #doc, #page-outer {
 .wrapper, .wrapper-narrow, .wrapper-permalink {
     margin: 0 auto;
     min-height: 100%;
-    padding: 54px 14px 15px;
+    padding: 56px 23px 15px;
     position: relative;
-    width: 837px;
+    width: 890px;
 }
 
-.clearfix:before, .clearfix:after, .control-group:before, .control-group:after, .stream-item > div:before, .stream-item > div:after, .module:after, .module:before, .follow-card header:after, .follow-card header:before, .follow-bar:after, .follow-bar:before, .search-header:after, .search-header:before, .tweet-form:after, .tweet-form:before, .modal-footer:after, .modal-footer:before, .local-trends-breadcrumb:after, .local-trends-breadcrumb:before, .input-prepend .add-on, .input-append .add-on, .wrapper:after, .wrapper:before, .expanded-content:before, .expanded-content:after, .stream-item:before, .stream-item:after {
-    content: " ";
-    display: table;
+.stream, .stream-items {
+    list-style: none outside none;
+    margin-left: 0;
+    position: relative;
 }
-.clearfix:after, .control-group:after, .stream-item > div:after, .module:after, .follow-card header:after, .follow-bar:after, .search-header:after, .tweet-form:after, .modal-footer:after, .local-trends-breadcrumb:after, .wrapper:after, .expanded-content:after, .stream-item:after {
-    clear: both;
-}
-.clearfix:before, .clearfix:after, .control-group:before, .control-group:after, .stream-item > div:before, .stream-item > div:after, .module:after, .module:before, .follow-card header:after, .follow-card header:before, .follow-bar:after, .follow-bar:before, .search-header:after, .search-header:before, .tweet-form:after, .tweet-form:before, .modal-footer:after, .modal-footer:before, .local-trends-breadcrumb:after, .local-trends-breadcrumb:before, .input-prepend .add-on, .input-append .add-on, .wrapper:after, .wrapper:before, .expanded-content:before, .expanded-content:after, .stream-item:before, .stream-item:after {
-    content: " ";
-    display: table;
-}
+
 .wrapper, .wrapper-narrow, .wrapper-permalink {
     min-height: 0;
 }
@@ -480,7 +481,6 @@ input, textarea, select, .uneditable-input {
   list-style: none;
   margin: 10px 0 0 0;li {
   padding: 10px 0;
-  border-top: 1px solid #e8e8e8;
 }
 }
 
