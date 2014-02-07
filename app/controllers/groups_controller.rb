@@ -1,8 +1,7 @@
 class GroupsController < ApplicationController
   def new
-    department_params = params[:department]
-    @current_department = Department.find_by_id(department_params[:id])
-    @group = Group.new
+    @current_department = Department.find_by_id(params[:department_id])
+    @group = @current_department.groups.build
   end
 
   def create
@@ -14,6 +13,7 @@ class GroupsController < ApplicationController
         @user_group_priv.user_id = current_user.id
         @user_group_priv.college_id = @group.college.id
         @user_group_priv.department_id = @group.department.id
+        #todo value is hard coded here
         @user_group_priv.group_priv = 4
         @user_group_priv.save!
       else

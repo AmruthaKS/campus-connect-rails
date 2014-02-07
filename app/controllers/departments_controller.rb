@@ -10,9 +10,8 @@ class DepartmentsController < ApplicationController
   end
   
   def new
-    @department = Department.new
-    college_params = params[:college]
-    @current_college = College.find_by_id(college_params[:id])
+    @current_college = College.find_by_id(params[:college_id])
+    @department = @current_college.departments.build
   end
 
   def create
@@ -22,6 +21,7 @@ class DepartmentsController < ApplicationController
         @user_dept_priv = @department.user_colleges.build
         @user_dept_priv.user_id = current_user.id
         @user_dept_priv.college_id = @department.college.id
+        #TODO fix this hard coded value
         @user_dept_priv.dept_priv = 4
         @user_dept_priv.save!
       else
