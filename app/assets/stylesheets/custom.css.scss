@@ -89,10 +89,14 @@ html, body, #doc, #page-outer {
     width: 890px;
 }
 
-.stream, .stream-items {
+.feed, .feed-items {
     list-style: none outside none;
     margin-left: 0;
     position: relative;
+}
+
+.feed-item, .unfocusable-feed-item {
+  background-clip: border-box;
 }
 
 .wrapper, .wrapper-narrow, .wrapper-permalink {
@@ -137,6 +141,12 @@ html, body, #doc, #page-outer {
 
 }
 
+.fullname {
+  color: #292F33;
+  font-weight: bold;
+
+}
+
 .enhanced-mini-profile .mini-profile .profile-summary .fullname, .enhanced-mini-profile .mini-profile .profile-summary .screen-name {
   color: #FFFFFF;
   display: block;
@@ -148,6 +158,8 @@ html, body, #doc, #page-outer {
   font-size: 21px;
   margin: 9px 0 8px;
 }
+
+
 
 
 .account-summary .account-group, .account-summary .account-action {
@@ -484,6 +496,67 @@ input, textarea, select, .uneditable-input {
 }
 }
 
+.micropost-header .avatar, .permalink-header .avatar {
+  float: left;
+  margin-left: -58px;
+  margin-top: 3px;
+}
+
+.feed-item .content, .permalink-tweet .content {
+  margin-left: 58px;
+}
+
+.comment {
+  background-color: #EDEFF4;
+  border-bottom: 1px solid #ffffff;
+}
+.comment .content {
+  margin-left: 40px;
+}
+
+.comment-header .avatar{
+  float: left;
+  margin-left: -40px;
+  margin-top: 3px;
+}
+
+.comment_submit{
+  float: right;
+}
+
+.micropost .js-tweet-text {
+  white-space: pre-wrap;
+}
+.micropost p {
+  word-wrap: break-word;
+}
+
+p {
+  margin: 0;
+}
+
+
+.avatar {
+  -moz-force-broken-image-icon: 1;
+  border-radius: 5px;
+}
+
+img {
+  border: 0 none;
+}
+
+.account, .interest-category, .list, .saved-search, .micropost, .app, .discover-item {
+  border-bottom: 1px solid #E8E8E8;
+  min-height: 51px;
+  padding: 9px 12px;
+  position: relative;
+}
+
+.micropost {
+  border-bottom: 1px solid #E1E8ED;
+  cursor: pointer;
+}
+
 .content {
   display: block;
 }
@@ -513,8 +586,6 @@ aside {textarea {
 /* comments */
 
 .comments {
-  padding-left: 100px;
-  padding-right: 100px;
   font-size: 11px;
   
   .comment_section{

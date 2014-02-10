@@ -1,41 +1,46 @@
-<li id="<%= "microspost_" + feed_item.id.to_s %>">
+<li id="<%= "microspost_" + feed_item.id.to_s %>" class="feed-item expanding-feed-item">
   <% posted_user = feed_item.user %>
-  <%= image_tag posted_user.avatar.url(:thumb), :size => "40x40" %>
-  <span class="user">
-    <%= link_to posted_user.name, posted_user %>
+  <div class="micropost">
+    <div class="content">
+      <div class="micropost-header">
+        <a class="account-group" data-user-id="<% posted_user.id %>" href="<%= user_path(posted_user)%>">
+          <%= image_tag posted_user.avatar.url(:thumb), :size => "50x50", :class => "avatar" %>
+          <strong class="fullname"><%= posted_user.name %></strong>
+        </a>
+        <% unless feed_item.target_type.eql?(USER_MICRO_POST) && feed_item.target_id.eql?(posted_user.id) %>
+            &gt;
+            <% target_object = get_referred_object_for_post feed_item  %>
+            <% if feed_item.target_type.eql?(USER_MICRO_POST) || feed_item.target_type.eql?(COLLEGE_MICRO_POST)%>
+                <%= link_to target_object.name, target_object %>
 
-    <% unless feed_item.target_type.eql?(USER_MICRO_POST) && feed_item.target_id.eql?(posted_user.id) %>
-        &gt;
-    <% target_object = get_referred_object_for_post feed_item  %>
-        <% if feed_item.target_type.eql?(USER_MICRO_POST) || feed_item.target_type.eql?(COLLEGE_MICRO_POST)%>
-            <%= link_to target_object.name, target_object %>
+            <%  elsif feed_item.target_type.eql?(DEPARTMENT_MICRO_POST) %>
+                <% college = target_object.college %>
+                <%= link_to college.name, college_path(college) %> &gt;
+                <%= link_to target_object.name, college_department_path(college, target_object) %>
 
-        <%  elsif feed_item.target_type.eql?(DEPARTMENT_MICRO_POST) %>
-            <% college = target_object.college %>
-            <%= link_to college.name, college_path(college) %> &gt;
-            <%= link_to target_object.name, college_department_path(college, target_object) %>
-
-        <%  elsif feed_item.target_type.eql?(GROUP_MICRO_POST) %>
-            <% college = target_object.college %>
-            <% department = target_object.department %>
-            <%= link_to college.name, college_path(college) %> &gt;
-            <%= link_to department.name, college_department_path(college, department) %> &gt;
-            <%= link_to target_object.name, college_department_group_path(college, department, target_object) %>
+            <%  elsif feed_item.target_type.eql?(GROUP_MICRO_POST) %>
+                <% college = target_object.college %>
+                <% department = target_object.department %>
+                <%= link_to college.name, college_path(college) %> &gt;
+                <%= link_to department.name, college_department_path(college, department) %> &gt;
+                <%= link_to target_object.name, college_department_group_path(college, department, target_object) %>
+            <% end %>
         <% end %>
-    <% end %>
-  </span>
-  <span class="content"><%= feed_item.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
-  </span>
-   <% if current_user?(feed_item.user) %>
-    <%= link_to "delete", feed_item, :method => :delete,
-                                     :data => { :confirm => "You sure?" },
-                                     :title => feed_item.content,
-                                     :remote => true %>
-  <% end %>
-   <% @micro_post = feed_item %>
-  <span>
-    <%= render 'shared/comments' %>
-  </span>
+      </div>
+      <p class="micropost-text">
+        <%= feed_item.content %>
+      </p>
+      <div class="micropost-footer clearfix">
+        <span class="timestamp">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</span>
+        <% if current_user?(feed_item.user) %>
+            <%= link_to "delete", feed_item, :method => :delete,
+                        :data => { :confirm => "You sure?" },
+                        :title => feed_item.content,
+                        :remote => true %>
+        <% end %>
+      </div>
+      <% @micro_post = feed_item %>
+      <%= render 'shared/comments' %>
+    </div>
+  </div>
 </li>
