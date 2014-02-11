@@ -1,0 +1,21 @@
+<div class="module profile-card component profile-header profile-page-header" data-component-term="profile_follow_card">
+  <div class="profile-header-inner flex-module clearfix">
+    <a class="profile-picture media-thumbnail js-tooltip" href="#" >
+      <%= image_tag @group.avatar.url(:thumb), :size => "100x100"  %>
+    </a>
+    <div class="profile-card-inner">
+      <h1 class="fullname editable-group">
+        <span class="profile-field"><%= @group.college.name %><br><%= @group.department.name%>&nbsp;,<%= @group.name %></span>
+      </h1>
+    </div>
+  </div>
+  <div class="flex-module profile-banner-footer clearfix">
+    <div class="default-footer">
+      <div class="UserActions u-textLeft">
+        <div class="user-actions btn-group not-following ">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
