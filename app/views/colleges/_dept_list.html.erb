@@ -1,9 +1,18 @@
 <% if @college.departments.any? %>
-<ol class="groups_collegs">
-	<% for department in @college.departments %>
-	<li>
-		<%= link_to department.name, college_department_path(@college, department) %>
-	</li>
-	<% end %>
-</ol>
+    <div class="colleges-inner">
+      <div class="flex-module trends-container ">
+        <div class="flex-module-header">
+          <h3>
+            <span class="colleges-list">Departments</span>
+          </h3>
+        </div>
+        <ol class="groups_collegs">
+          <% for department in @college.departments %>
+              <li>
+                <%= link_to department.name, college_department_path(@college, department) %>
+              </li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
 <% end %>
