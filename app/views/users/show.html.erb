@@ -1,64 +1,20 @@
 <% provide(:title, @user.name) %>
-<div class="dashboard">
-  <div class="component">
-    <div class="module profile-nav" role="navigation">
-      <ul class="js-nav-links">
-        <li class="active">
-          <a class="list-link js-nav" data-nav="profile" href="<%= user_path(@user) %>">
-          Posts
-            <i class="Icon Icon--caretRight"></i>
-          </a>
-        </li>
-        <li class="">
-          <a data-nav="following" href="<%= following_user_path(@user) %>" class="list-link js-nav">
-            Following
-            <i class="Icon Icon--caretRight"></i></a>
-        </li>
-        <li class="">
-          <a data-nav="followers" href="<%= followers_user_path(@user) %>" class="list-link js-nav">
-            Followers
-            <i class="Icon Icon--caretRight"></i></a>
-        </li>
-      </ul>
+
+<%= render 'user_profile' %>
+<%= render 'user_dashboard' %>
+
+<div class="content-main" id="timeline" role="main">
+  <div class="post_form" id ="post_form">
+    <%= render 'micropost_form' %>
+  </div>
+
+  <div class="stream-container conversations-enabled persistent-inline-actions light-inline-actions">
+    <div class="stream-item">
+
+    </div>
+    <div class="feed home-feed">
+      <% @feed_items = @user.related_microposts.paginate(:page => params[:page]) %>
+      <%= render 'shared/feed' %>
     </div>
   </div>
 </div>
-
-
-  <aside class="span4 left_bar">
-    <section>
-      <h1>
-        <%= image_tag @user.avatar.url(:thumb), :size => "100x100"  %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-    <section class="favorite_links">
-      	<%= render 'users/user_links'%>
-     </section>
-     <section class="favorite_links">
-      	<%= render 'users/list_colleges'%>
-     </section>
-  </aside>
-  <div id="main_content" class="span8 feed_content">  
-    <%= render 'follow_form' if signed_in? %>
-   	<%= render 'user_details_top' %>
-
-   		<section class="post_form" id ="post_form">
-        	<%= render 'micropost_form' %>
-     	</section>
-    <ol class="microposts" id="microposts">
-    <% microposts = @user.related_microposts.paginate(:page => params[:page]) %>
-    <% if microposts.any? %>
-
-        <%= render microposts %>
-
-      <%= will_paginate microposts %>
-    <% end %>
-    </ol>
-  </div>
-  <aside class="span4 right_bar">
-    	<%= render 'shared/misc' %>
-  </aside>

@@ -1,2 +1,4 @@
+<% if @referred_id.to_i.eql?(current_user.id.to_i)%>
 $("#following").html('<%= current_user.followed_users.count %>');
+<% end %>
 $('#<%= "unfollow" + @user.id.to_s %>').html("<%= escape_javascript(render('users/user_follow')) %>");

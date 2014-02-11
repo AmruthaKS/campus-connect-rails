@@ -1,4 +1,5 @@
-    <% if !current_user.colleges.blank? %>
+<% @user ||= current_user %>
+    <% if !@user.colleges.blank? %>
         <div class="colleges-inner">
           <div class="flex-module trends-container ">
             <div class="flex-module-header">
@@ -6,14 +7,13 @@
                   <span class="colleges-list">Colleges</span>
                 </h3>
             </div>
+            <ol class="groups_collegs">
+              <% for college in @user.colleges %>
+                  <li>
+                    <%= link_to college.name, college %>
+                  </li>
+              <% end %>
+            </ol>
           </div>
         </div>
-    <ol class="groups_collegs">
-      <% for college in current_user.colleges %>
-      <li>
-       <%= link_to college.name, college %> 
-       </li>
-      <% end %>
-      </ol>
     <% end %>
-  

@@ -1,0 +1,27 @@
+<div class="dashboard">
+  <div class="component">
+    <div class="module profile-nav" role="navigation">
+      <ul class="js-nav-links">
+        <li class="active">
+          <a class="list-link js-nav" data-nav="profile" href="<%= user_path(@user) %>">
+            Posts
+            <i class="Icon Icon--caretRight"></i>
+          </a>
+        </li>
+        <li class="">
+          <a data-nav="following" href="<%= following_user_path(@user) %>" class="list-link js-nav">
+            Following
+            <i class="Icon Icon--caretRight"></i></a>
+        </li>
+        <li class="">
+          <a data-nav="followers" href="<%= followers_user_path(@user) %>" class="list-link js-nav">
+            Followers
+            <i class="Icon Icon--caretRight"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="module colleges">
+      <%= render 'shared/show_colleges'%>
+    </div>
+  </div>
+</div>
