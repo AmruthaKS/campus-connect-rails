@@ -21,6 +21,8 @@ class RelationshipsController < ApplicationController
 
   def user_unfollow
     @user = User.find(params[:id])
+    @referred_id = params[:user][:referred_id]
+    puts "******************************* " + @referred_id
     current_user.relationships.find_by_followed_id(@user).delete
     respond_to do |format|
       format.html { }
@@ -30,6 +32,8 @@ class RelationshipsController < ApplicationController
 
   def user_follow
     @user = User.find(params[:id])
+    @referred_id = params[:user][:referred_id]
+    puts "******************************* " + @referred_id
     current_user.follow!(@user)
     respond_to do |format|
       format.html { }
