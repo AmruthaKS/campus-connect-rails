@@ -1,25 +1,21 @@
 <% if signed_in? %>
-<div class="row">
-	<aside class="span4 left_bar">
-		<section>
-			<%= render 'groups/group_info' %>
-		</section>
-		<section>
-			<h2>student list (need to work)</h2>
-		</section>
-	</aside>
-	<div class="span8">
-		<%= render 'groups/group_name_header'%>
+<%= render 'group_profile' %>
+<%= render 'group_dashboard' %>
+
+    <div class="content-main" id="timeline" role="main">
 		<% if has_read_access_for_group?(@group.id, current_user.id) %>
 		<% if has_write_access_for_group?(@group.id, current_user.id) %>
-		<section class="post_field">
+              <div class="post_form" id ="post_form">
 			<%= render 'groups/post_form' %>
-		</section>
+		</div>
 		<% end %>
-		<%= render 'shared/feed' %>
+          <div class="stream-container conversations-enabled persistent-inline-actions light-inline-actions">
+            <div class="feed home-feed">
+              <%= render 'shared/feed' %>
+            </div>
+          </div>
           <% end %>
 	</div>
-</div>
 <% else %>
 <%= redirect_to root_url %>
 <% end %>
