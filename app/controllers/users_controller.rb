@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   require 'inboxes_helper'
-   before_filter :signed_in_user, :only => [:index, :edit, :update, :destroy, :following, :followers]
-   before_filter :correct_user,   :only => [:edit, :update]
+  before_filter :signed_in_user, :only => [:index, :edit, :update, :destroy, :following, :followers, :show]
+  before_filter :correct_user,   :only => [:edit, :update]
+
    
   def new
     @user = User.new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   end
   
   def show
-     @micropost = current_user.microposts.build(params[:micropost])
+      @micropost = current_user.microposts.build(params[:micropost])
      @user = User.find(params[:id])
   end
 
