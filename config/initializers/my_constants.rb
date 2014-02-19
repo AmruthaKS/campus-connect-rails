@@ -5,7 +5,7 @@ LEVEL_DEPT = 'department'
 LEVEL_GROUP = 'group'
 
 #NOTIFICATION CONSTANTS
-NOTIFICATION_TYPES = { 1 => 'comment', 2 => 'like', 3 => 'post', 4 => 'approve', 5 => 'follow' }
+NOTIFICATION_TYPES = { 1 => 'comment', 2 => 'like', 3 => 'post', 4 => 'approve', 5 => 'follow', 6 => 'approved' }
 
 COMMENT = 'comment'
 POST = 'post'
@@ -19,6 +19,7 @@ LIKE_NOTIFICATION_TYPE = 2
 POST_NOTIFICATION_TYPE = 3
 APPROVE_NOTIFICATION_TYPE = 4
 FOLLOW_NOTIFICATION_TYPE = 5
+APPROVED_NOTIFICATION_TYPE = 6
 
 
 #ACCESS_RIGHTS

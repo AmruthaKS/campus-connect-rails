@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       event.tContent_id = micro_post_id
       event.tContent_type = POST_TCONTENT_TYPE
 
-      event.description = current_user.name + ' ' + EVENT_TYPES[COMMENT_EVENT_TYPE] + ' ' + 'post'
+      event.description = current_user.name + ' ' + EVENT_TYPES[COMMENT_EVENT_TYPE] + ' post'
       event.save
 
       micro_post_user_id = @micropost.user.id
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
         notification = Notification.new
         notification.event_id = event.id
         #todo: analyze the description part does this really makes sense?
-        notification.description = current_user.name + ' ' + EVENT_TYPES[COMMENT_EVENT_TYPE] + ' ' + ' your post'
+        notification.description = '<b>' + current_user.name + '</b> ' + EVENT_TYPES[COMMENT_EVENT_TYPE] + ' your <b>post</b>'
         notification.notification_type = COMMENT_NOTIFICATION_TYPE
 
         #Here it is important because to generate the clickable notification link
