@@ -4,9 +4,9 @@
     <block>
       <% user = pending_approval_item.user %>
       <%= image_tag user.avatar.url(:small), :size => "40x40" %>
-      <%= link_to(user.name, user) %>
-      <%= link_to pending_approval_item.college.name, pending_approval_item.college %>
-      <%= link_to pending_approval_item.department.name, pending_approval_item.department %>
+      <b><%= link_to(user.name, user) %></b> Joined
+      <%= link_to pending_approval_item.college.name, pending_approval_item.college %> &gt;
+      <%= link_to pending_approval_item.department.name, pending_approval_item.department %> &gt;
       <%= link_to pending_approval_item.group.name, pending_approval_item.group %>
 
     </block>

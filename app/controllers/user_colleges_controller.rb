@@ -23,7 +23,7 @@ class UserCollegesController < ApplicationController
     #FIXME: Description --> needs to be changed ()
     notification = Notification.new
     notification.event_id = event.id
-    notification.description = current_user.name + ' ' + EVENT_TYPES[JOINED_EVENT_TYPE] + ' ' + college.name + ' Approval pending'
+    notification.description = '<b>' + current_user.name + '</b> ' + EVENT_TYPES[JOINED_EVENT_TYPE] + ' <b>' + college.name + '</b> Approval pending'
     notification.notification_type = APPROVE_NOTIFICATION_TYPE
    # notification.tContent_id = current_user.id
     notification.tContent_type= APPROVE_RCONTENT_TYPE

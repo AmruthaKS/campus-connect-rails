@@ -1,8 +1,6 @@
 module MicropostsHelper
 
-
   def get_referred_object_for_post(micropost)
-
     if micropost.target_type.eql? USER_MICRO_POST
       User.find(micropost.target_id);
 
