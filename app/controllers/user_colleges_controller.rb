@@ -43,7 +43,7 @@ class UserCollegesController < ApplicationController
 
   def approveme
     @user_college = UserCollege.find(params[:id])
-    @user_college.update_attributes(:college_priv => 1, :dept_priv => 1, :group_priv => 1)
+    @user_college.update_attributes(:college_priv => READ_ACCESS_RIGHT, :dept_priv => READ_ACCESS_RIGHT, :group_priv => WRITE_ACCESS_RIGHT)
 
     respond_to do |format|
       format.html { }
