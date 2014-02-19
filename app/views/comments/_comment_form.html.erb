@@ -1,6 +1,6 @@
 <%= form_for(@comment, :remote => true) do |f| %>
   <div class="comment_field">
-    <%= f.text_area :content, :placeholder => "Write a comment..." %>
+    <%= f.text_area :content, :placeholder => "Write a comment...", :class => "comment_text" %>
     <%= f.hidden_field :micropost_id, :value => @comment.micropost_id %>
   </div>
   <%= f.submit "Comment", :class => "btn comment_submit"%>

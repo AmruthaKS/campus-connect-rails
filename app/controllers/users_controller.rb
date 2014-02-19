@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  require 'inboxes_helper'
   before_filter :signed_in_user, :only => [:index, :edit, :update, :destroy, :following, :followers, :show]
   before_filter :correct_user,   :only => [:edit, :update]
 
@@ -84,8 +83,7 @@ class UsersController < ApplicationController
    end
 
    def notifications_check
-     @title = 'notifications'
-     @user =  User.find(params[:id])
+     check_all_notifications_for(current_user.id)
      respond_to do |format|
        format.html { }
        format.js
@@ -104,5 +102,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
+
+  def check_all_notifications_for(user_id)
+    ActiveRecord::Base.connection.execute("update inboxes set checked = #{CHECKED_INBOX} where user_id = #{ActiveRecord::Base.sanitize(user_id)}")
+  end
   
 end
