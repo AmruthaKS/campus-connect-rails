@@ -45,6 +45,20 @@ class UserCollegesController < ApplicationController
     @user_college = UserCollege.find(params[:id])
     @user_college.update_attributes(:college_priv => READ_ACCESS_RIGHT, :dept_priv => READ_ACCESS_RIGHT, :group_priv => WRITE_ACCESS_RIGHT)
 
+    notification = Notification.new
+
+    notification.description = '<b>' + @user_college.college.name + '</b> request been ' + NOTIFICATION_TYPES[APPROVED_NOTIFICATION_TYPE]
+    notification.notification_type = APPROVED_NOTIFICATION_TYPE
+    notification.tContent_id = @user_college.group_id
+    notification.tContent_type= GROUP_RCONTENT_TYPE
+    notification.save
+
+    inbox = Inbox.new
+    inbox.notification_id = notification.id
+    inbox.user_id = @user_college.user_id
+    inbox.checked = false
+    inbox.save
+
     respond_to do |format|
       format.html { }
       format.js
