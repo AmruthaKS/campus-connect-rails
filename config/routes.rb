@@ -4,7 +4,6 @@ StaticTest::Application.routes.draw do
 
   resources :users do
     member do
-      post :notifications_check
       get :following, :followers, :info, :notifications, :events, :approve, :autocomplete_user_name
     end
     resources :microposts
@@ -81,6 +80,7 @@ StaticTest::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy', :via => :delete
   match '/fb_login', :to => 'fb#login'
   match '/fb_redirect', :to => 'fb#redirect'
+  match '/notifications_check', :to => 'users#notifications_check'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

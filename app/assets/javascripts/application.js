@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(function() {
-	var companyList = $("#user_college_college").autocomplete({
+	var collegeList = $("#user_college_college").autocomplete({
 		change : function() {
 			alert('changed');
 		}
@@ -60,8 +60,17 @@ $(document).ready(function() {
 
     $('textarea.comment_text').pressEnter(function(){
        // $(this).closest("form").trigger('submit.rails')
-
         $.post("/comments.js", $(this).closest("form").serialize());
+    });
+
+    $('#notifications-section').click(function(){
+        $.ajax({
+            type: 'POST',
+            url: "/notifications_check.js",
+            context: document.body,
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        }).done(function() {
+            });
     });
 });
 
