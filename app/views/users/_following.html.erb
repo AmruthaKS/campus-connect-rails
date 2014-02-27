@@ -8,11 +8,16 @@
             <%= link_to usr.name, usr %>
           </div>
           <div id="<%= 'unfollow' + usr.id.to_s %>" class="unfollow_button_display" style="width:30%;display: inline; float:left;">
-            <% @user = usr %>
             <% if current_user.following?usr %>
-                <%=  render 'user_unfollow' %>
+                <%= form_for(usr, :html => { :method => :post }, :url => user_unfollow_relationship_path(usr), :remote => true) do |f| %>
+                    <%= f.hidden_field :referred_id, :value => @user.id %>
+                    <%= f.submit " UnFollow ", :class => "btn btn-large" %>
+                <% end %>
             <% else %>
-                <%=  render 'user_follow' %>
+                <%= form_for(usr, :html => { :method => :post }, :url => user_follow_relationship_path(usr), :remote => true) do |f| %>
+                    <%= f.hidden_field :referred_id, :value => @user.id %>
+                    <%= f.submit " Follow ", :class => "btn btn-large btn-primary" %>
+                <% end %>
             <% end %>
           </div>
         </block>

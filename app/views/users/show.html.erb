@@ -1,40 +1,20 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4 left_bar">
-    <section>
-      <h1>
-        <%= image_tag @user.avatar.url(:thumb), :size => "100x100"  %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-    <section class="favorite_links">
-      	<%= render 'users/user_links'%>
-     </section>
-     <section class="favorite_links">
-      	<%= render 'users/list_colleges'%>
-     </section>
-  </aside>
-  <div id="main_content" class="span8 feed_content">  
-    <%= render 'follow_form' if signed_in? %>
-   	<%= render 'user_details_top' %>
 
-   		<section class="post_form" id ="post_form">
-        	<%= render 'micropost_form' %>
-     	</section>
-    <ol class="microposts" id="microposts">
-    <% microposts = @user.related_microposts.paginate(:page => params[:page]) %>
-    <% if microposts.any? %>
+<%= render 'user_profile' %>
+<%= render 'user_dashboard' %>
 
-        <%= render microposts %>
-
-      <%= will_paginate microposts %>
-    <% end %>
-    </ol>
+<div class="content-main" id="timeline" role="main">
+  <div class="post_form" id ="post_form">
+    <%= render 'micropost_form' %>
   </div>
-  <aside class="span4 right_bar">
-    	<%= render 'shared/misc' %>
-  </aside>
+
+  <div class="stream-container conversations-enabled persistent-inline-actions light-inline-actions">
+    <div class="stream-item">
+
+    </div>
+    <div class="feed home-feed">
+      <% @feed_items = @user.related_microposts.paginate(:page => params[:page]) %>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
 </div>

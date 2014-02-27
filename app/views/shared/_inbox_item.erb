@@ -2,9 +2,8 @@
 <a href="<%= get_referred_url_for_notification(notification) %>">
 <li id="<%= 'notification_' + notification.id.to_s %>">
   <span class="content">
-    <% event = notification.event %>
     <block>
-      <b><%= event.user.name %></b> <%= EVENT_TYPES[event.event_type] %> <b><%= get_tcontent_string_for_event(event) %> </b>
+      <%= render(:inline => notification.description) %>
     </block>
   </span>
   <span class="timestamp">

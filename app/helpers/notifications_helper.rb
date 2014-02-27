@@ -14,6 +14,11 @@ def get_referred_url_for_notification(notification)
       micropost = Micropost.find(notification.tContent_id)
       user_who_caused = User.find(notification.event.user_id)
       user_micropost_path(user_who_caused, micropost)
+
+    elsif notification.tContent_type.eql? GROUP_RCONTENT_TYPE
+      group = Group.find(notification.tContent_id)
+      college_department_group_path(group.college, group.department, group)
+
   end
 
 end

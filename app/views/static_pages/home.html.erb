@@ -1,41 +1,56 @@
-<% if signed_in? %>
-  <div class="row">
-    <aside class="span4 left_bar">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section class="favorite_links">
-      	<%= render 'shared/favorite_links'%>
-      </section>
-      <section>
-      	<%= render 'shared/show_groups' %>
-      </section>
-    </aside>
-    <div class="span8 feed_content">
-     <section class="post_form" id ="post_form">
-        <%= render 'microposts/micropost_form' %>
-      </section>
-      <%= render 'shared/feed' %>
-    </div>
-    <aside class="span4 right_bar">
-    	<%= render 'shared/misc' %>
-    </aside>
-  </div>
-<% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to <span style="display: block">Campus-Connect</span></h1>
+    <% if signed_in? %>
+          <div class="dashboard">
+            <div class="module mini-profile">
+                <div class="flex-module profile-summary js-profile-summary">
+                  <div class="profile-header-inner-overlay"></div>
+                  <%= render 'shared/user_info' %>
+                  <div class="js-mini-profile-stats-container">
+                    <%= render 'shared/stats' %>
+                  </div>
+                </div>
+            </div>
+            <!--
+               <section class="favorite_links">
+                <%= render 'shared/favorite_links'%>
+            </section>    -->
+            <div class="module colleges">
+              <%= render 'shared/show_colleges' %>
+            </div>
+          </div>
 
-    <h2>
-     Stay tuned to the college activities. To know more 
-      <a href="#">click</a> here.
-    </h2>
+            <div class="content-main" id="timeline" role="main">
+              <div class="post_form" id ="post_form">
+                <%= render 'microposts/micropost_form' %>
+              </div>
 
-    <%= link_to "Sign up now!", signup_path,
-                                :class => "btn btn-large btn-primary" %>
-  </div>
+              <div class="stream-container conversations-enabled persistent-inline-actions light-inline-actions">
+                <div class="stream-item">
 
-  <%= link_to image_tag("rails.png", :alt => "Rails"), 'http://rubyonrails.org/' %>
-<% end %>
+                </div>
+                <div class="feed home-feed">
+                  <%= render 'shared/feed' %>
+                </div>
+              </div>
+            </div>
+
+        <!--
+            <aside class="span4 right_bar">
+                <%= render 'shared/misc' %>
+            </aside>      -->
+
+
+        <% else %>
+          <div class="center hero-unit">
+            <h1>Welcome to <span style="display: block">Campus-Connect</span></h1>
+
+            <h2>
+             Stay tuned to the college activities. To know more
+              <a href="#">click</a> here.
+            </h2>
+
+            <%= link_to "Sign up now!", signup_path,
+                                        :class => "btn btn-large btn-primary" %>
+          </div>
+
+          <%= link_to image_tag("rails.png", :alt => "Rails"), 'http://rubyonrails.org/' %>
+        <% end %>

@@ -19,7 +19,7 @@ class FbController < ApplicationController
 
   private
   def setup_client
-    @client = FBGraph::Client.new(:client_id => '197706077036694',:secret_id =>'821d276c9d7ab11d7c04534e600b64fc')
+    @client = FBGraph::Client.new(:client_id => '632863720094476',:secret_id =>'b2eb57002b6d3a5d367b81a87a189a31')
   end
 
 end

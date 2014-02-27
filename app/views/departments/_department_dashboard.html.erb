@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <div class="component">
+    <div class="module profile-nav" role="navigation">
+      <ul class="js-nav-links">
+        <li class="active">
+          <a class="list-link js-nav" data-nav="profile" href="<%= college_department_path(@department.college, @department)%>">
+            Posts
+            <i class="Icon Icon--caretRight"></i>
+          </a>
+        </li>
+        <li class="">
+          <a data-nav="following" href="#" class="list-link js-nav">
+            About
+            <i class="Icon Icon--caretRight"></i></a>
+        </li>
+        <li class="">
+          <a data-nav="followers" href="#" class="list-link js-nav">
+            Admins
+            <i class="Icon Icon--caretRight"></i></a>
+        </li>
+        <li class="">
+          <a data-nav="followers" href="#" class="list-link js-nav">
+            Events
+            <i class="Icon Icon--caretRight"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="module colleges">
+      <%= render 'group_list'%>
+    </div>
+  </div>
+</div>

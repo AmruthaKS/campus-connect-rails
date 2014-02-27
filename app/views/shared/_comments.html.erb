@@ -1,15 +1,11 @@
-<div class="comments">
-<div  id="comments_post_<%= @micro_post.id%>">
-<ol>
+<div class="comment-items">
+<ol id="comments_post_<%= @micro_post.id%>">
   <% @comment_items = @micro_post.comments %>
   <%= render :partial => 'shared/comment_item', :collection=> @comment_items %>
 </ol>
+  <% @comment = Comment.new(:micropost_id => @micro_post.id) %>
+  <% @comment.user_id = current_user.id %>
+  <div id="comments_post_form_<%= @micro_post.id%>">
+    <%= render 'comments/comment_form' %>
+  </div>
 </div>
-
-   <% @comment = Comment.new(:micropost_id => @micro_post.id) %>
-   <% @comment.user_id = current_user.id %>
-   <div id="comments_post_form_<%= @micro_post.id%>">
-   <%= render 'comments/comment_form' %>
-</div>
-</div>
-

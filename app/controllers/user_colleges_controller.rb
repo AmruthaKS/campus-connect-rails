@@ -23,7 +23,7 @@ class UserCollegesController < ApplicationController
     #FIXME: Description --> needs to be changed ()
     notification = Notification.new
     notification.event_id = event.id
-    notification.description = current_user.name + ' ' + EVENT_TYPES[JOINED_EVENT_TYPE] + ' ' + college.name + ' Approval pending'
+    notification.description = '<b>' + current_user.name + '</b> ' + EVENT_TYPES[JOINED_EVENT_TYPE] + ' <b>' + college.name + '</b> Approval pending'
     notification.notification_type = APPROVE_NOTIFICATION_TYPE
    # notification.tContent_id = current_user.id
     notification.tContent_type= APPROVE_RCONTENT_TYPE
@@ -43,7 +43,21 @@ class UserCollegesController < ApplicationController
 
   def approveme
     @user_college = UserCollege.find(params[:id])
-    @user_college.update_attributes(:college_priv => 1, :dept_priv => 1, :group_priv => 1)
+    @user_college.update_attributes(:college_priv => READ_ACCESS_RIGHT, :dept_priv => READ_ACCESS_RIGHT, :group_priv => WRITE_ACCESS_RIGHT)
+
+    notification = Notification.new
+
+    notification.description = '<b>' + @user_college.college.name + '</b> request been ' + NOTIFICATION_TYPES[APPROVED_NOTIFICATION_TYPE]
+    notification.notification_type = APPROVED_NOTIFICATION_TYPE
+    notification.tContent_id = @user_college.group_id
+    notification.tContent_type= GROUP_RCONTENT_TYPE
+    notification.save
+
+    inbox = Inbox.new
+    inbox.notification_id = notification.id
+    inbox.user_id = @user_college.user_id
+    inbox.checked = false
+    inbox.save
 
     respond_to do |format|
       format.html { }

@@ -1,24 +1,8 @@
 <% provide(:title, @title) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <%= image_tag @user.avatar.url(:thumb), :size => "100x100"  %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
-            <%= link_to image_tag(user.avatar.url(:thumb), size: "40x40"), user %>
-          <% end %>
-        </div>
-      <% end %>
-    </section>
-  </aside>
-  <div class="span8">
+<%= render 'user_profile' %>
+<%= render 'user_dashboard' %>
+
+  <div class="content-main">
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users">
@@ -31,6 +15,4 @@
         <br><br><br><h2> You dont have any followers right now... </h2>
         <% end %>
     <% end %>
-
   </div>
-</div>

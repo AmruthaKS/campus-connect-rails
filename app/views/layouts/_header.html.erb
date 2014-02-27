@@ -14,14 +14,15 @@
                   <% end %>
                       <ul class="nav right-actions">
                    <% if loggedin %>
-                        <li id="notifications-menu" class="dropdown">
-                          <%= link_to 'Clear', notifications_check_user_path(current_user), :remote => true, :method => :post %>
-                        </li>
 
                         <li id="notifications-menu" class="dropdown">
+                          <div id="notifications-section">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <%= image_tag('notifications.png', :alt => 'Notifications', :class => "gravatar", :size => '25x25') %>
-                            <span><%=  unchecked_notifications_for(current_user.id).count.to_s %> </span>
+                            <%= image_tag('notifications.png', :alt => 'Notifications', :class => "notification_image", :id => "notification_image", :size => '25x25') %>
+                            <% notifications_count = unchecked_notifications_count_for(current_user.id) %>
+                            <% if notifications_count > 0 %>
+                                <span id="notification_count" class="notification_count"><%= notifications_count.to_s %> </span>
+                            <% end %>
                           </a>
                           <ul class="dropdown-menu" STYLE="width: 400px; text-align: center">
                             <% inbox_items = current_user.inbox_notifications %>
@@ -32,6 +33,7 @@
                               <%= link_to "See all notifications", notifications_user_path(current_user) %>
                             </section>
                           </ul>
+                          </div>
                         </li>
 
                         <li>

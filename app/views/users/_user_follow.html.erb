@@ -1,3 +1,4 @@
 <%= form_for(@user, :html => { :method => :post }, :url => user_follow_relationship_path(@user), :remote => true) do |f| %>
+    <%= f.hidden_field :referred_id, :value => @referred_id %>
     <%= f.submit " Follow ", :class => "btn btn-large btn-primary" %>
 <% end %>
